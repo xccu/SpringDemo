@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report23_template1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ee7d56c6-3780-4b54-b7ff-9f32259ffee5">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="CDSCode" class="java.lang.String">
+		<fieldDescription><![CDATA[CDS_Code]]></fieldDescription>
+	</field>
+	<field name="reportCode" class="java.lang.String">
+		<fieldDescription><![CDATA[CDS_Code]]></fieldDescription>
+	</field>
+	<field name="reportName" class="java.lang.String">
+		<fieldDescription><![CDATA[report_Name]]></fieldDescription>
+	</field>
+	<field name="airline" class="java.lang.String">
+		<fieldDescription><![CDATA[airline]]></fieldDescription>
+	</field>
+	<field name="airlineName" class="java.lang.String">
+		<fieldDescription><![CDATA[airline_Name]]></fieldDescription>
+	</field>
+	<field name="month" class="java.lang.String">
+		<fieldDescription><![CDATA[month]]></fieldDescription>
+	</field>
+	<field name="difCode" class="java.lang.String">
+		<fieldDescription><![CDATA[dif_Code]]></fieldDescription>
+	</field>
+	<field name="agent" class="java.lang.String">
+		<fieldDescription><![CDATA[agent]]></fieldDescription>
+	</field>
+	<field name="agentType" class="java.lang.String">
+		<fieldDescription><![CDATA[agent_Type]]></fieldDescription>
+	</field>
+	<field name="agentName" class="java.lang.String">
+		<fieldDescription><![CDATA[agent_Name]]></fieldDescription>
+	</field>
+	<field name="reportTime" class="java.lang.String">
+		<fieldDescription><![CDATA[report_Time]]></fieldDescription>
+	</field>
+	<field name="pageNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[page_Number]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="16" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="116" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="25" uuid="7d5ad38f-74b4-4041-98b4-4ef32c53556c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="25" width="555" height="25" uuid="3dc2fb09-d542-4dab-8a56-6b7e52490fc0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="50" width="555" height="25" uuid="7c8eb971-039a-4610-b421-ea03f348984c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="30" width="58" height="20" uuid="1f9801e0-b802-43df-9733-a6d66a767be0"/>
+				<text><![CDATA[ MONTH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="55" width="58" height="20" uuid="c85d0d2f-bf79-47ba-b2fc-8958b378e522"/>
+				<text><![CDATA[ Note]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="75" width="555" height="20" uuid="224b7b9a-eb5c-48fa-89fd-dc0e55280d8f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="95" width="555" height="20" uuid="64cca724-f3b6-402a-a722-e5dec210bdc0"/>
+			</rectangle>
+			<textField>
+				<reportElement x="4" y="4" width="73" height="20" uuid="63030de2-9e02-40e5-9e8f-ed289d5e282f"/>
+				<textFieldExpression><![CDATA[$F{CDSCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="4" width="100" height="20" uuid="94ffb00b-6440-4850-b42f-76021856e09b"/>
+				<textFieldExpression><![CDATA[$F{reportCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="4" width="50" height="20" uuid="23b7d8b2-cace-4bce-911a-6d8d62f4a3a7"/>
+				<textFieldExpression><![CDATA[$F{airline}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="4" width="137" height="20" uuid="4827e44f-6772-4122-accf-71dc6166204e"/>
+				<textFieldExpression><![CDATA[$F{airlineName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="104" y="30" width="100" height="20" uuid="0a228a04-82ba-4a4f-baf2-523e79e57af6"/>
+				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="75" width="54" height="20" uuid="2fbefd75-d6a8-4379-82af-7f13c34c6f85"/>
+				<textFieldExpression><![CDATA[$F{difCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="96" width="51" height="20" uuid="1eda33d7-aff2-4187-b943-77768d653850"/>
+				<textFieldExpression><![CDATA[$F{agent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="77" y="95" width="100" height="20" uuid="426d5ce3-7028-4062-b4ca-407fb6450eec"/>
+				<textFieldExpression><![CDATA[$F{agentType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="215" y="96" width="100" height="20" uuid="e6e51f90-8384-477e-878f-fe39146a861c"/>
+				<textFieldExpression><![CDATA[$F{agentName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="9" width="77" height="20" uuid="8020265a-513c-49c9-bb57-232582411bee"/>
+				<text><![CDATA[ ISSUE TYPE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="104" y="9" width="25" height="20" uuid="c95efbfc-c786-4f07-9359-39dd35e0391c"/>
+				<text><![CDATA[ FOP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="9" width="48" height="20" uuid="c63de94c-e6c4-48f9-a573-7ce1f7175da4"/>
+				<text><![CDATA[ COUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="9" width="48" height="20" uuid="b0398852-ac29-406b-82e4-989916801159"/>
+				<text><![CDATA[ GROSS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="9" width="28" height="20" uuid="625b2abe-a586-445f-a62f-21ce7a50f3f5"/>
+				<text><![CDATA[ NET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="9" width="48" height="20" uuid="0239a279-61d7-4b67-9200-846fa34f9e16"/>
+				<text><![CDATA[ COMM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="9" width="28" height="20" uuid="ab807906-7691-4b22-9124-89934af54d85"/>
+				<text><![CDATA[ TAX]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="9" width="61" height="20" uuid="4bc5cac9-35c1-45a0-9516-49f6497e5a03"/>
+				<text><![CDATA[BALANCE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="247" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="246" width="555" height="1" uuid="06fc4f6a-6a0b-46c9-9376-26e4a918da4e"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="478" y="0" width="33" height="20" uuid="b6e94857-8a28-494f-9830-f0698dd309e0"/>
+				<text><![CDATA[ Page]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="7" y="0" width="100" height="20" uuid="4aa0a63c-04d4-4823-a40d-68bd9fa34ecc"/>
+				<textFieldExpression><![CDATA[$F{reportTime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="511" y="0" width="44" height="20" uuid="9f6b5413-2f4f-48bc-bc2b-c0a2ebf67da3"/>
+				<textFieldExpression><![CDATA[$F{pageNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

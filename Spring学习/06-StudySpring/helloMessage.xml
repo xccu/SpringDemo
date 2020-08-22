@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="HelloZh" class="cn.lovepi.HelloZh">
+
+    </bean>
+    <bean id="HelloEn" class="cn.lovepi.HelloEn">
+
+    </bean>
+    <bean id="Person" class="cn.lovepi.Person">
+        <!--bean中属性配置，属性即为类中所声明的接口变量。给其添加了一个引用-->
+        <property name="iHelloMessage" ref="HelloZh">
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.example.definition.HelloWorldImpl"/>
+
+    <!--2.指定id，唯一-->
+    <bean id="HelloWorldById" class="com.example.definition.HelloWorldImpl"/>
+
+    <!--3.指定name，name为标识符，唯一-->
+    <bean name="HelloWorldByName" class="com.example.definition.HelloWorldImpl"/>
+
+    <!--4.指定id和name，其中id为标识符，name为别名，唯一-->
+    <bean id="HelloWorldById01" name="HelloWorldByName01"
+          class="com.example.definition.HelloWorldImpl"/>
+
+    <!--5.指定多个name，其中多个name需要用分号来进行分割，第一个name为标识符，其他的为别名，唯一-->
+    <bean name="bean1;alias01;alias02;alias03"
+          class="com.example.definition.HelloWorldImpl"/>
+    <bean id="bean2" name="alias11;alias12;alias13"
+          class="com.example.definition.HelloWorldImpl"/>
+
+    <!--6.指定别名，使用alias标签来进行指定，唯一-->
+    <bean name="bean3" class="com.example.definition.HelloWorldImpl"/>
+    <alias name="bean3" alias="alias21"/>
+    <alias name="bean3" alias="alias22"/>
+
+</beans>
