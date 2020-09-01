@@ -28,5 +28,12 @@ public interface UserDao {
     @Select("select * from Users")
     List<User> findAllByRowBounds(RowBounds rowBounds);
 
+    /**
+     * 不使用任何额外参数
+     * @return
+     */
+    @Select("select * from Users")
+    List<User> findAll();
+
 }
 

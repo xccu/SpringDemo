@@ -2,6 +2,7 @@ package com.example.mybatispagehelperdemo;
 
 import com.example.mybatispagehelperdemo.dao.UserDao;
 import com.example.mybatispagehelperdemo.model.User;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.RowBounds;
@@ -12,7 +13,11 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Slf4j
 @SpringBootApplication
@@ -28,7 +33,16 @@ public class MybatisPagehelperDemoApplication implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		onRowBounds();
+		onPageHelperParams();
+		onPageHelper();
+	}
 
+	/**
+	 * 使用RowBounds
+	 */
+	private void onRowBounds() {
+		log.info("=========onRowBounds==========");
 		//使用RowBounds分页
 		//第1页，每页3条记录
 		userDao.findAllByRowBounds(new RowBounds(1, 3))
@@ -42,7 +56,13 @@ public class MybatisPagehelperDemoApplication implements ApplicationRunner {
 		userDao.findAllByRowBounds(new RowBounds(1, 0))
 				.forEach(c -> log.info("Page(1) User {}", c));
 		log.info("===================");
+	}
 
+	/**
+	 * 使用带参数的PageHelper
+	 */
+	private void onPageHelperParams(){
+		log.info("=========onPageHelperParams==========");
 		//使用参数传入页码和页大小
 		userDao.findAllByParam(1, 3)
 				.forEach(c -> log.info("Page(1) User {}", c));
@@ -54,4 +74,32 @@ public class MybatisPagehelperDemoApplication implements ApplicationRunner {
 		log.info("PageInfo: {}", page);
 	}
 
+	/**
+	 * 使用不带参数的PageHelper
+	 */
+	private void onPageHelper(){
+		log.info("=========onPageHelper==========");
+
+		List<User> users;
+		int page =1;
+
+		//是否还有下一页
+		boolean isHasNextPage = true;
+		while(isHasNextPage) {
+
+			//使用PageHelper插件设置页码和页大小
+			PageHelper.startPage(page, 3);
+			PageInfo<User> pageInfo = new PageInfo<>(userDao.findAll());
+
+			//users会被累加
+			//users = Stream.of(pageInfo.getList(), users).flatMap(Collection::stream).collect(Collectors.toList());
+
+			users = Stream.of(pageInfo.getList()).flatMap(Collection::stream).collect(Collectors.toList());
+			isHasNextPage = pageInfo.isHasNextPage();
+			for(User user : users){
+				log.info("Page({}) User {}",page, user);
+			}
+			page++;
+		}
+	}
 }
