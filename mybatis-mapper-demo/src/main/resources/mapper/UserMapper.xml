@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.UserMapper">
+
+    <resultMap id="user" type="com.example.demo.entity.User"/>
+    <parameterMap id="user" type="com.example.demo.entity.User"/>
+
+    <!-- 使用alias自定义的parameterType-->
+    <insert id="save" parameterType="user">
+        INSERT INTO Users (name, password, age, sex) VALUES (#{name}, #{password}, #{age}, #{sex})
+    </insert>
+
+    <select id="findByName" parameterType="String" resultMap="user">
+        SELECT * FROM Users WHERE name = #{name}
+    </select>
+
+    <select id="findAll" resultMap="user">
+        SELECT * FROM Users
+    </select>
+
+    <delete id="deleteByname" parameterType="String">
+        DELETE FROM Users WHERE name=#{name}
+    </delete>
+
+    <update id="updateAge" parameterMap="user">
+       UPDATE Users SET age = #{age} WHERE name = #{name}
+    </update>
+
+</mapper>
