@@ -1,21 +1,23 @@
 package com.example.demo.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
- * 饼图
+ * 柱状图
  */
 @Controller
-@RequestMapping("/pie")
-@Slf4j
-public class PieController {
+@RequestMapping("/calendar")
+public class CalendarController {
 
     @GetMapping(path = "/demo1")
     public String demo1() {
-        return "pie/pie-demo-1";
+        return "calendar/calendar-demo-1";
+    }
+
+    @GetMapping(path = "/demo2")
+    public String demo2() {
+        return "calendar/calendar-demo-2";
     }
 }

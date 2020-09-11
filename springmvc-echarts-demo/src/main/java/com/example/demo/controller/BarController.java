@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class BarController {
 
     @GetMapping(path = "/demo1")
-    public ModelAndView demo1() {
-        return new ModelAndView("bar/bar-demo-1");
+    public String demo1() {
+        return "bar/bar-demo-1";
     }
 }
