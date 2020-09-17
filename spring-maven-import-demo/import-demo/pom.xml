@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>springmvc-echarts-demo</artifactId>
-	<version>0.0.1</version>
-	<name>springmvc-echarts-demo</name>
+	<artifactId>import-demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>import-demo</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -24,21 +24,11 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
-		<!--web相关依赖-->
+		<!--引用自定义的package依赖-->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<!--thymeleaf模板引擎依赖，用于视图解析-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<!--lombok依赖-->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<groupId>com.example.maven</groupId>
+			<artifactId>output</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
@@ -54,13 +44,7 @@
 		</dependency>
 	</dependencies>
 
-	<!--执行package指令时打包为war（默认打包为jar）-->
-	<packaging>war</packaging>
-
-	<!--编译配置-->
 	<build>
-		<!--生成jar/war包的名称-->
-		<finalName>springmvc-echarts-demo</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -68,6 +52,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

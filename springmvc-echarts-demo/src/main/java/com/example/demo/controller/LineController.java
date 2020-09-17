@@ -15,12 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class LineController {
 
     @GetMapping(path = "/demo1")
-    public ModelAndView demo1() {
-        return new ModelAndView("line/line-demo-1");
+    public String demo1() {
+        return "line/line-demo-1";
     }
 
     @GetMapping(path = "/demo2")
-    public ModelAndView demo2() {
-        return new ModelAndView("line/line-demo-2");
+    public String demo2() {
+        return "line/line-demo-2";
     }
 }

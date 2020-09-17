@@ -12,13 +12,21 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/gauge")
 public class GaugeController {
 
+    /**
+     * http://localhost:8090/gauge/demo1
+     * @return
+     */
     @GetMapping(path = "/demo1")
-    public ModelAndView demo1() {
-        return new ModelAndView("gauge/gauge-demo-1");
+    public String demo1() {
+        return "gauge/gauge-demo-1";
     }
 
+    /**
+     * http://localhost:8090/gauge/demo2
+     * @return
+     */
     @GetMapping(path = "/demo2")
-    public ModelAndView demo2() {
-        return new ModelAndView("gauge/gauge-demo-2");
+    public String demo2() {
+        return "gauge/gauge-demo-2";
     }
 }
