@@ -14,6 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/bar")
 public class BarController {
 
+    /**
+     * http://localhost:8090/bar/demo1
+     * @return
+     */
     @GetMapping(path = "/demo1")
     public String demo1() {
         return "bar/bar-demo-1";
