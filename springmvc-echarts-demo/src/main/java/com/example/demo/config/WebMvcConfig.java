@@ -39,6 +39,10 @@ public class WebMvcConfig  extends WebMvcConfigurerAdapter {
         registry.addViewController("/calendar/demo1").setViewName("/calendar/calendar-demo-1");
         //http://localhost:8090/calendar/demo2
         registry.addViewController("/calendar/demo2").setViewName("/calendar/calendar-demo-2");
+
+        //雷达图
+        //http://localhost:8090/radar/demo1
+        registry.addViewController("/radar/demo1").setViewName("/radar/radar-demo-1");
     }
 
 }
