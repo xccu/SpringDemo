@@ -26,7 +26,7 @@ public class Boss{
     }*/
 
     //Set类型
-    /*private Set favorites;
+    private Set favorites;
 
     public Set getFavorites() {
         return favorites;
@@ -34,7 +34,7 @@ public class Boss{
 
     public void setFavorites(Set favorites){
         this.favorites = favorites;
-    }*/
+    }
 
     //Map类型
     /*private Map favorites;
@@ -48,7 +48,7 @@ public class Boss{
     }*/
 
     //Properties类型
-    private Properties favorites;
+    /*private Properties favorites;
 
     public Properties getFavorites() {
         return favorites;
@@ -57,7 +57,20 @@ public class Boss{
 
     public void setFavorites(Properties  favorites){
         this.favorites = favorites;
+    }*/
+
+
+    //强类型集合
+    /*private Map<Integer, String> favorites;
+
+    public Map getFavorites() {
+        return favorites;
     }
+
+    public void setFavorites(Map  favorites){
+        this.favorites = favorites;
+    }*/
+
 
     @Override
     public String toString() {
