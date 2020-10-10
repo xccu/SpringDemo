@@ -64,7 +64,7 @@
         </property>
     </bean>-->
 
-    <!--6.集使用Set类型-->
+    <!--6.集合使用Set类型-->
     <!--<bean id="boss4" class="com.example.Boss">
         <property name="favorites">
             <set>
@@ -74,7 +74,8 @@
         </property>
     </bean>-->
 
-    <bean id="boss" class="com.example.Boss">
+    <!--6.集合使用map类型-->
+    <!--<bean id="boss4" class="com.example.Boss">
         <property name="favorites">
             <map>
                 <entry>
@@ -87,7 +88,31 @@
                 </entry>
             </map>
         </property>
+    </bean>-->
+
+    <!--当map中的键和值都是对象时的配置方法-->
+    <!--<bean id="boss" class="com.example.Boss">
+        <property name="favorites">
+            <map>
+                <entry>
+                    <key><ref bean="keyBean"/></key>
+                    <ref bean="valueBean"/>
+                </entry>
+            </map>
+        </property>
+    </bean>-->
+
+    <!--6.集合使用properties类型-->
+    <bean id="boss4" class="com.example.Boss">
+        <property name="favorites">
+            <props>
+                <prop key="p01">唱歌</prop>
+                <prop key="p02">运动</prop>
+                <prop key="p01">读书</prop>
+            </props>
+        </property>
     </bean>
+
 
  </beans>
 

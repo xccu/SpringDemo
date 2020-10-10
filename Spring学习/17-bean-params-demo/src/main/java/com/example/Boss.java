@@ -1,9 +1,6 @@
 package com.example;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Boss{
 
@@ -40,13 +37,25 @@ public class Boss{
     }*/
 
     //Map类型
-    private Map favorites;
+    /*private Map favorites;
 
     public Map getFavorites() {
         return favorites;
     }
 
     public void setFavorites(Map  favorites){
+        this.favorites = favorites;
+    }*/
+
+    //Properties类型
+    private Properties favorites;
+
+    public Properties getFavorites() {
+        return favorites;
+    }
+
+
+    public void setFavorites(Properties  favorites){
         this.favorites = favorites;
     }
 
