@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!--1.字面值-->
+    <bean id="car" class="com.example.Car">
+        <property name="maxSpeed">
+            <value>200</value>
+        </property>
+        <property name="brand">
+            <!--<value><![CDATA[红旗&CA72]]></value>-->
+            <value>红旗&amp;CA72</value>
+        </property>
+    </bean>
+
+    <!--2.引用其他的Bean-->
+    <bean id="boss1" class="com.example.Boss">
+        <property name="car">
+            <ref bean="car"></ref>
+        </property>
+    </bean>
+
+    <!--3.内部bean-->
+    <bean id="boss2" class="com.example.Boss">
+        <property name="car">
+            <bean class="com.example.Car" >
+                <property name="price" value="200"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!--错误的注入null值方式-->
+    <!--<bean id="car" class="com.example.Car">
+        <property name="brand">
+            <value></value>
+        </property>
+    </bean>-->
+
+    <!--4.使用null标签注入null值-->
+    <!--<bean id="car" class="com.example.Car">
+        <property name="brand">
+            <null/>
+        </property>
+    </bean>-->
+
+    <!--5.级联属性-->
+    <bean id="boss3" class="com.example.Boss">
+        <property name="car.brand">
+            <value>奔驰E级</value>
+        </property>
+    </bean>
+
+    <!--6.集合类型属性-->
+    <!--<bean id="boss4" class="com.example.Boss">
+        <property name="favorites">
+            <list>
+                <value>唱歌</value>
+                <value>运动</value>
+                <value>读书</value>
+            </list>
+        </property>
+    </bean>-->
+
+    <!--6.集使用Set类型-->
+    <!--<bean id="boss4" class="com.example.Boss">
+        <property name="favorites">
+            <set>
+                <value>唱歌</value>
+                <value>运动</value>
+            </set>
+        </property>
+    </bean>-->
+
+    <bean id="boss" class="com.example.Boss">
+        <property name="favorites">
+            <map>
+                <entry>
+                    <key><value>key01</value></key>
+                    <value>唱歌</value>
+                </entry>
+                <entry>
+                    <key><value>key02</value></key>
+                    <value>唱歌</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+ </beans>
+
