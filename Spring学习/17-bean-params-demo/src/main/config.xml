@@ -103,7 +103,7 @@
     </bean>-->
 
     <!--6.集合使用properties类型-->
-    <bean id="boss4" class="com.example.Boss">
+    <!--<bean id="boss4" class="com.example.Boss">
         <property name="favorites">
             <props>
                 <prop key="p01">唱歌</prop>
@@ -111,8 +111,39 @@
                 <prop key="p01">读书</prop>
             </props>
         </property>
+    </bean>-->
+
+    <!--6.强类型集合类型-->
+    <!--<bean id="boss4" class="com.example.Boss">
+        <property name="favorites">
+            <map>
+                <entry>
+                    <key><value>101</value></key>
+                    <value>唱歌</value>
+                </entry>
+            </map>
+        </property>
+    </bean>-->
+
+    <!--配置父bean-->
+    <bean id="parentBoss" abstract="true" class="com.example.Boss">
+        <property name="favorites">
+            <set>
+                <value>唱歌</value>
+                <value>运动</value>
+                <value>看书</value>
+            </set>
+        </property>
     </bean>
 
+    <!--配置子bean-->
+    <bean id="childtBoss" parent="parentBoss">
+        <property name="favorites">
+            <set merge="true" >
+                <value>旅游</value>
+                <value>睡觉</value>
+            </set>
+        </property>
+    </bean>
 
- </beans>
-
+</beans>
