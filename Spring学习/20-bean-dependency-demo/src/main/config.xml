@@ -22,10 +22,13 @@
     <bean id="boss" class="com.example.Boss" p:car="car" scope="prototype" />-->
 
     <!--<idref>配置方法-->
-    <bean id="car" class="com.example.Car"/>
+    <bean id="car" class="com.example.Car" p:brand="奔驰E300" p:price="2000" p:color="黑色"/>
     <bean id="boss" class="com.example.Boss" >
         <property name="carId">
             <idref bean="car"/>
+        </property>
+        <property name="car">
+            <ref bean="car"/>
         </property>
     </bean>
 
