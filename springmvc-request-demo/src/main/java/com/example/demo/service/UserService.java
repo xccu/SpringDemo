@@ -18,7 +18,7 @@ public class UserService {
     }
 
     public User getByName(String name){
-        return getUserList().stream().filter(t->t.getName()==name).findFirst().orElse(new User());
+        return getUserList().stream().filter(t->name.equals(t.getName())).findFirst().orElse(new User());
     }
 
     private List<User> getUserList(){

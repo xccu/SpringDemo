@@ -29,7 +29,7 @@ public class UserController {
     UserService userService;
 
     /**
-     * 获取所有list，以json形式返回
+     * 获取所有user，以json形式返回
      * url:"http://localhost:8080/user/all"
      * @return
      */
