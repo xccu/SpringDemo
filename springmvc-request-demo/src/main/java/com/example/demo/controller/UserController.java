@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -180,11 +181,18 @@ public class UserController {
         return Users;
     }
 
-
-    @PostMapping(path = "/download", produces  = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity <byte[]> download() throws IOException {
-        File file = new File("D://WorkSpace//Git//SpringDemo//springmvc-request-demo//src//main//resources//Users.txt");
-        //File file = new File("Users.txt");
+    /**
+     * http://localhost:8080/user/download?fileName=Users.txt
+     * 文件下载
+     * @param fileName
+     * @return
+     * @throws IOException
+     */
+    @GetMapping(path = "/download", produces  = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity <byte[]> download(@RequestParam String fileName) throws IOException {
+        File file = ResourceUtils.getFile("classpath:"+fileName);
         byte[] body = null;
         InputStream is = new FileInputStream(file);
         body = new byte[is.available()];

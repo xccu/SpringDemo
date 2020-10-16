@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c0e6547c-8c5e-4fac-ac9a-89ab11bf0280",
+		"_postman_id": "edf77c57-89aa-49b7-aecd-cce9bf7db978",
 		"name": "springmvc-request-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -234,10 +234,10 @@
 		{
 			"name": "文件下载",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/user/download",
+					"raw": "http://localhost:8080/user/download?fileName=Users.txt",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -246,6 +246,12 @@
 					"path": [
 						"user",
 						"download"
+					],
+					"query": [
+						{
+							"key": "fileName",
+							"value": "Users.txt"
+						}
 					]
 				}
 			},
