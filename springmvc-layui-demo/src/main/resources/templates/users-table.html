@@ -17,7 +17,13 @@
 <body>
 
 
-
+<div class="demoTable">
+    搜索姓名：
+    <div class="layui-inline">
+        <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+    </div>
+    <button class="layui-btn" data-type="reload" id="demoReloadBtn">搜索</button>
+</div>
 <table id="test" lay-filter="test"></table>
 
 <script type="text/html" id="barDemo">
@@ -25,37 +31,50 @@
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
-<table id="demo"></table>
-
+<button class="layui-btn" data-type="reload" id="loadBtn">加载</button>
 <table id="test2" lay-filter="test2"></table>
 
 <div class="layui-btn-group">
     <button class="layui-btn" data-type="parseTable">转化为数据表格</button>
 </div>
 
-
+<table id="test3"></table>
 
 
 </div>
 
 <script src="/layui.js"  charset="utf-8"></script>
+<script src="/js/jquery.min.js"  charset="utf-8"></script>
 <script th:inline="none">
+
+    /*$('#demoReloadBtn').on('click', function(){
+        //重新加载table
+        var name = $('#demoReload').val();
+
+        table.reload(
+            'test'  //layui ID
+            ,{url:'/user/getByName?'+name} //http请求，通过name参数筛选
+        );
+    });*/
 
     layui.use('table', function(){
         var table = layui.table;
 
         table.render({
-            elem: '#test'
-            ,url:'/user/allJson'
-            ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+            elem: '#test'               //html元素ID
+            ,id:'test'                  //layui ID
+            ,url:'/user/allJson'        //数据接口请求地址
+            ,toolbar: '#toolbarDemo'    //开启头部工具栏，并为其绑定左侧模板
             ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                 title: '提示'
                 ,layEvent: 'LAYTABLE_TIPS'
                 ,icon: 'layui-icon-tips'
             }]
             ,title: '用户数据表'
+            ,width: 580
+            ,height: 312
             ,cols: [[ //标题栏
-                {type: 'checkbox', LAY_CHECKED: true}
+                {type: 'checkbox', width: 50,LAY_CHECKED: true}
                 ,{field: 'id', title: 'ID', width: 80, sort: true}
                 ,{field: 'name', title: '姓名', width: 120}
                 ,{field: 'sex', title: '性别', width: 80}
@@ -87,8 +106,10 @@
 
         table.render({
             elem: '#test2'
+            ,id: 'test2'
+            ,width: 500
             ,height: 312
-            ,url: '/user/allStr' //数据接口
+            //,url: '/user/allStr' //数据接口
             ,page: true //开启分页
             ,cols: [[ //标题栏
                 {field: 'id', title: 'ID', width: 80}
@@ -100,8 +121,8 @@
 
         //直接赋值数据
         table.render({
-            elem: '#demo'
-            //,width: 900
+            elem: '#test3'
+            ,width: 600
             //,height: 274
             ,cols: [[ //标题栏
                 {type: 'checkbox', LAY_CHECKED: true}
@@ -127,8 +148,25 @@
             ,page: true //是否显示分页
             ,limits: [3,5,10]
             ,limit: 3 //每页默认显示的数量
-            ,width:600
             //,loading: false //请求数据时，是否显示loading
+        });
+
+        $('#demoReloadBtn').on('click', function(){
+            //重新加载table
+            var name = $('#demoReload').val();
+
+            table.reload(
+                'test'  //layui ID
+                ,{url:'/user/getByName?name='+name} //http请求，通过name参数筛选:http://localhost:8080/user/getByName?name={name}
+            );
+        });
+
+        $('#loadBtn').on('click', function(){
+            //重新加载table
+            table.reload(
+                'test2'  //layui ID
+                ,{url:'/user/allStr'} //http请求：http://localhost:8080/user/allStr
+            );
         });
 
         //监听行工具事件
