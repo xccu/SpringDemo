@@ -4,7 +4,10 @@ import com.example.demo.model.User;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +15,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss ");
 
     /**
      * 获取所有user，以json形式返回
@@ -63,6 +68,8 @@ public class UserController {
     @GetMapping(value = "/allJson")
     public JSONObject getAllUserJson(){
 
+        Date d = new Date();
+        log.info(sdf.format(d)+":allJson");
         List<User> users= getUserList();
         //在传入中，为了满足Layui的格式要求，加上了一些头部：code、msg、count、data
         JSONObject json = new JSONObject();
@@ -83,6 +90,9 @@ public class UserController {
     @ResponseBody
     @GetMapping(value = "/getByName")
     public JSONObject getByName(String name){
+
+        Date d = new Date();
+        log.info(sdf.format(d)+":getByName");
 
         List<User> users= getUserList();
         users = users.stream().filter(t->t.getName().equals(name)).collect(Collectors.toList());
