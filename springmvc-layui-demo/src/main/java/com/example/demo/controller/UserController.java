@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.common.PageUtil;
 import com.example.demo.model.User;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONObject;
@@ -23,12 +24,12 @@ public class UserController {
      * url:"http://localhost:8080/user/all"
      * @return
      */
-    @ResponseBody
+    /*@ResponseBody
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public List<User> getAllUser() {
         log.info("getAllUsers");
         return getUserList();
-    }
+    }*/
 
     /**
      * josn格式字符串
@@ -61,22 +62,24 @@ public class UserController {
 
     /**
      * json对象
-     * url:"http://localhost:8080/user/allJson"
+     * url:"http://localhost:8080/user/all"
      * @return
      */
     @ResponseBody
-    @GetMapping(value = "/allJson")
-    public JSONObject getAllUserJson(){
+    @GetMapping(value = "/all")
+    public JSONObject getAllUserJson(int page,int limit){
 
         Date d = new Date();
-        log.info(sdf.format(d)+":allJson");
+        log.info(sdf.format(d)+" /all:"+"page:"+page+"\tlimit:"+limit);
         List<User> users= getUserList();
+        int count = users.size();
+        users = PageUtil.startPage(users,page,limit);
         //在传入中，为了满足Layui的格式要求，加上了一些头部：code、msg、count、data
         JSONObject json = new JSONObject();
         json.put("msg", "success");
         json.put("code", "0");
         json.put("status", "200");
-        json.put("count", users.size());
+        json.put("count", count);
         json.put("data", users);
         return json;
     }
@@ -92,7 +95,7 @@ public class UserController {
     public JSONObject getByName(String name){
 
         Date d = new Date();
-        log.info(sdf.format(d)+":getByName");
+        log.info(sdf.format(d)+" /getByName:"+name);
 
         List<User> users= getUserList();
         users = users.stream().filter(t->t.getName().equals(name)).collect(Collectors.toList());
@@ -104,6 +107,27 @@ public class UserController {
         json.put("status", "200");
         json.put("count", users.size());
         json.put("data", users);
+        return json;
+    }
+
+    @ResponseBody
+    @GetMapping(value = "/getById")
+    public JSONObject getById(Integer id){
+
+        Date d = new Date();
+        log.info(sdf.format(d)+" /getById:"+id);
+
+        List<User> users= getUserList();
+        User user = users.stream().filter(t->t.getId().equals(id)).findFirst().orElse(null);
+
+        //在传入中，为了满足Layui的格式要求，加上了一些头部：code、msg、count、data
+        JSONObject json = new JSONObject();
+        json.put("msg", "success");
+        json.put("code", "0");
+        json.put("status", "200");
+        json.put("flag", true);
+        //json.put("count", users.size());
+        json.put("data", user);
         return json;
     }
 

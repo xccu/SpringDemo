@@ -27,6 +27,7 @@
 <table id="test" lay-filter="test"></table>
 
 <script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
@@ -63,7 +64,7 @@
         table.render({
             elem: '#test'               //html元素ID
             ,id:'test'                  //layui ID
-            ,url:'/user/allJson'        //数据接口请求地址
+            ,url:'/user/all'        //数据接口请求地址
             ,toolbar: '#toolbarDemo'    //开启头部工具栏，并为其绑定左侧模板
             ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                 title: '提示'
@@ -71,7 +72,7 @@
                 ,icon: 'layui-icon-tips'
             }]
             ,title: '用户数据表'
-            ,width: 580
+            ,width: 600
             ,height: 312
             ,cols: [[ //标题栏
                 {type: 'checkbox', width: 50,LAY_CHECKED: true}
@@ -79,16 +80,17 @@
                 ,{field: 'name', title: '姓名', width: 120}
                 ,{field: 'sex', title: '性别', width: 80}
                 ,{field: 'age', title: '年龄', width: 80}
-                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:180}
 
             ]]
             ,page: true
             ,limits: [3,5,10]
             ,limit: 3 //每页默认显示的数量
-            ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据，res为从url中get到的数据
+            /*,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据，res为从url中get到的数据
                 var result;
                 console.log(this);
                 console.log(JSON.stringify(res));
+                //通过前端分页
                 if(this.page.curr){
                     result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
                 }
@@ -101,7 +103,7 @@
                     "count": res.count, //解析数据长度
                     "data": result //解析数据列表
                 };
-            }
+            }*/
         });
 
         table.render({
@@ -109,7 +111,7 @@
             ,id: 'test2'
             ,width: 500
             ,height: 312
-            //,url: '/user/allStr' //数据接口
+            //,url: '/user/all' //数据接口
             ,page: true //开启分页
             ,cols: [[ //标题栏
                 {field: 'id', title: 'ID', width: 80}
@@ -175,7 +177,7 @@
             //重新加载table
             table.reload(
                 'test2'  //layui ID
-                ,{url:'/user/allStr'} //http请求：http://localhost:8080/user/allStr
+                ,{url:'/user/all'} //http请求：http://localhost:8080/user/all
             );
         });
 
@@ -198,6 +200,15 @@
                         age: value
                     });
                     layer.close(index);
+                });
+            }
+            else if(obj.event === 'detail'){
+                layer.open({
+                    title:'用户详细信息',
+                    type: 2,
+                    skin: 'layui-layer-rim',
+                    area: ['800px', '580px'],
+                    content: '/layui/user?'+data.id
                 });
             }
         });
