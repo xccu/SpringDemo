@@ -21,41 +21,47 @@
     <legend>用户信息</legend>
 </fieldset>
 <form class="layui-form layui-form-pane1" action="" lay-filter="first">
-    <table width="500">
+    <table width="500" style="margin-left: 30px">
         <tr>
             <td width="90" style="float: top">
-                <img layer-src="http://t.cn/RCzsdCq" src="http://t.cn/RCzsdCq" width="90px" height="120px"/>
+                <img id ="avatar" layer-src="" src="" class="layui-nav-img" style="width: 100px; height: 100px"/>
             </td>
             <td>
 
                 <div class="layui-form-item">
-                    <label class="layui-form-label">ID</label>
-                    <div class="layui-input-block">
+                    <label class="layui-form-label" style="width: 30px">ID</label>
+                    <div class="layui-input-block" style="margin-left: 60px">
                         <input type="text" name="id" lay-verify="required|title" lay-reqText="标题不能为空" required placeholder="请输入标题" autocomplete="off" class="layui-input" >
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">姓名</label>
-                    <div class="layui-input-block">
+                    <label class="layui-form-label" style="width: 30px">姓名</label>
+                    <div class="layui-input-block" style="margin-left: 60px">
                         <input type="text" name="name" lay-verify="required|number" lay-verType="tips" autocomplete="off" class="layui-input">
                     </div>
                 </div>
+
+            </td>
+        </tr>
+        <tr style="height: 20px"></tr>
+        <tr>
+            <td colspan="2">
                 <div class="layui-form-item">
-                    <label class="layui-form-label">性别</label>
-                    <div class="layui-input-block">
+                    <label class="layui-form-label" style="width: 30px">性别</label>
+                    <div class="layui-input-block" style="margin-left: 60px">
                         <input type="text" name="sex" lay-verify="email"  lay-verType="alert" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">生日</label>
-                    <div class="layui-input-block">
+                    <label class="layui-form-label" style="width: 30px">生日</label>
+                    <div class="layui-input-block" style="margin-left: 60px">
                         <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
-                    <label class="layui-form-label">年龄</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="age" lay-verify="required|pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    <label class="layui-form-label" style="width: 30px">年龄</label>
+                    <div class="layui-input-block" style="margin-left: 60px">
+                        <input type="text" name="age" class="layui-input">
                     </div>
                 </div>
             </td>
@@ -108,6 +114,9 @@
                         ,'sex':  data.data.sex
                         ,'age':  data.data.age
                     });
+
+                    //填充其他信息
+                    $("#avatar").attr("src",data.data.avatarUrl)
                 }
             }
         });

@@ -141,6 +141,7 @@ public class UserController {
         user.setName("Weslie");
         user.setAge(12);
         user.setSex("male");
+        user.setAvatarUrl("/avatar/weslie.jpg");
         userList.add(user);
 
         user = new User();
@@ -148,6 +149,7 @@ public class UserController {
         user.setName("Wolffy");
         user.setAge(34);
         user.setSex("male");
+        user.setAvatarUrl("/avatar/wolffy.jpg");
         userList.add(user);
 
         user = new User();
@@ -155,6 +157,7 @@ public class UserController {
         user.setName("Tibbie");
         user.setAge(11);
         user.setSex("female");
+        user.setAvatarUrl("/avatar/tibbie.jpg");
         userList.add(user);
 
         user = new User();
@@ -162,6 +165,7 @@ public class UserController {
         user.setName("Sparky");
         user.setAge(12);
         user.setSex("male");
+        user.setAvatarUrl("/avatar/sparky.jpg");
         userList.add(user);
 
         user = new User();
@@ -169,71 +173,114 @@ public class UserController {
         user.setName("Paddi");
         user.setAge(10);
         user.setSex("male");
+        user.setAvatarUrl("/avatar/paddi.jpg");
         userList.add(user);
 
         user = new User();
         user.setId(6);
-        user.setName("Wilie");
-        user.setAge(5);
-        user.setSex("male");
+        user.setName("Jonie");
+        user.setAge(12);
+        user.setSex("female");
+        user.setAvatarUrl("/avatar/jonie.jpg");
         userList.add(user);
 
         user = new User();
         user.setId(7);
-        user.setName("Wolnie");
-        user.setAge(33);
-        user.setSex("female");
+        user.setName("Slowy");
+        user.setAge(70);
+        user.setSex("male");
+        user.setAvatarUrl("/avatar/slowy.jpg");
         userList.add(user);
-
 
         user = new User();
         user.setId(8);
-        user.setName("Weslie");
-        user.setAge(12);
-        user.setSex("male");
+        user.setName("Wolnie");
+        user.setAge(33);
+        user.setSex("female");
+        user.setAvatarUrl("/avatar/wolnie.jpg");
         userList.add(user);
 
         user = new User();
         user.setId(9);
-        user.setName("Wolffy");
-        user.setAge(34);
+        user.setName("Wilie");
+        user.setAge(5);
         user.setSex("male");
+        user.setAvatarUrl("/avatar/wilie.jpg");
         userList.add(user);
+
 
         user = new User();
         user.setId(10);
-        user.setName("Tibbie");
-        user.setAge(11);
-        user.setSex("female");
+        user.setName("Weslie");
+        user.setAge(12);
+        user.setSex("male");
+        user.setAvatarUrl("/avatar/weslie.jpg");
         userList.add(user);
 
         user = new User();
         user.setId(11);
-        user.setName("Sparky");
-        user.setAge(12);
+        user.setName("Wolffy");
+        user.setAge(34);
         user.setSex("male");
+        user.setAvatarUrl("/avatar/wolffy.jpg");
         userList.add(user);
 
         user = new User();
         user.setId(12);
-        user.setName("Paddi");
-        user.setAge(10);
-        user.setSex("male");
+        user.setName("Tibbie");
+        user.setAge(11);
+        user.setSex("female");
+        user.setAvatarUrl("/avatar/tibbie.jpg");
         userList.add(user);
 
         user = new User();
         user.setId(13);
-        user.setName("Wilie");
-        user.setAge(5);
+        user.setName("Sparky");
+        user.setAge(12);
         user.setSex("male");
+        user.setAvatarUrl("/avatar/sparky.jpg");
         userList.add(user);
 
         user = new User();
         user.setId(14);
+        user.setName("Paddi");
+        user.setAge(10);
+        user.setSex("male");
+        user.setAvatarUrl("/avatar/paddi.jpg");
+        userList.add(user);
+
+        user = new User();
+        user.setId(15);
+        user.setName("Jonie");
+        user.setAge(12);
+        user.setSex("female");
+        user.setAvatarUrl("/avatar/jonie.jpg");
+        userList.add(user);
+
+        user = new User();
+        user.setId(16);
+        user.setName("Slowy");
+        user.setAge(70);
+        user.setSex("male");
+        user.setAvatarUrl("/avatar/slowy.jpg");
+        userList.add(user);
+
+        user = new User();
+        user.setId(17);
         user.setName("Wolnie");
         user.setAge(33);
         user.setSex("female");
+        user.setAvatarUrl("/avatar/wolnie.jpg");
         userList.add(user);
+
+        user = new User();
+        user.setId(18);
+        user.setName("Wilie");
+        user.setAge(5);
+        user.setSex("male");
+        user.setAvatarUrl("/avatar/wilie.jpg");
+        userList.add(user);
+
 
         return userList;
     }
