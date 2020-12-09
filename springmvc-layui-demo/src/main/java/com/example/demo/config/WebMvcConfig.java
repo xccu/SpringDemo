@@ -32,7 +32,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         //http://localhost:8080/layui/users
         registry.addViewController("/layui/users").setViewName("/users-table");
         //http://localhost:8080/layui/user
-        //registry.addViewController("/layui/user").setViewName("/user");
+        registry.addViewController("/layui/user").setViewName("/user");
     }
 }
 
