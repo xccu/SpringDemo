@@ -4,6 +4,8 @@ import com.example.demo.common.PageUtil;
 import com.example.demo.model.User;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.json.JSONObject;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
@@ -13,23 +15,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
-@RestController
+//@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss ");
 
-    /**
-     * 获取所有user，以json形式返回
-     * url:"http://localhost:8080/user/all"
-     * @return
-     */
-    /*@ResponseBody
-    @RequestMapping(value = "/all", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public List<User> getAllUser() {
-        log.info("getAllUsers");
-        return getUserList();
-    }*/
+
+    @GetMapping(path = "/index")
+    public String index(int id,Model model){
+
+        List<User> users= getUserList();
+        User user = users.stream().filter(t->t.getId().equals(id)).findFirst().orElse(null);
+
+
+        model.addAttribute("User", user);
+
+        return "index";
+    }
 
     /**
      * josn格式字符串

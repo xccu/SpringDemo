@@ -52,6 +52,15 @@
                         <input type="text" name="sex" lay-verify="email"  lay-verType="alert" autocomplete="off" class="layui-input">
                     </div>
                 </div>
+
+                <div class="layui-form-item" pane>
+                    <label class="layui-form-label">性别</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="sex" id="r-male" value="男" title="男">
+                        <input type="radio" name="sex"  id="r-female" value="女" title="女">
+                    </div>
+                </div>
+
                 <div class="layui-form-item">
                     <label class="layui-form-label" style="width: 30px">生日</label>
                     <div class="layui-input-block" style="margin-left: 60px">
@@ -90,6 +99,18 @@
         return null;
     }
 
+
+    function setSexRadio(sex){
+
+        if(sex=="male"){
+            $("input[name='sex']").get(0).checked=true;
+        }
+        else {
+            $('input[name="sex"]:last').prop('checked', 'checked');
+        }
+
+    }
+
     layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form
             ,layer = layui.layer
@@ -97,6 +118,8 @@
             ,laydate = layui.laydate;
 
         var id = getURLId();
+
+
 
         //通过ajax请求初始化表单
         $.ajax({
@@ -112,9 +135,17 @@
                         'id': data.data.id
                         ,'name':  data.data.name
                         ,'sex':  data.data.sex
-                        ,'age':  data.data.age
+                        //,'age':  data.data.age
                     });
+                    var sex =  data.data.sex;
+                    setSexRadio("male");
+                    /*if(sex=="male"){
+                        $("input[name='sex']").get(0).checked=true;
 
+                    }
+                    else {
+                        $('input[name="sex"]:last').prop('checked', 'checked');
+                    }*/
                     //填充其他信息
                     $("#avatar").attr("src",data.data.avatarUrl)
                 }
