@@ -23,6 +23,12 @@ public class UserController {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss ");
 
 
+    /**
+     * http://localhost:8080/user/index?id=1
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping(path = "/index")
     public String index(int id,Model model){
 
@@ -30,7 +36,7 @@ public class UserController {
         User user = users.stream().filter(t->t.getId().equals(id)).findFirst().orElse(null);
 
 
-        model.addAttribute("User", user);
+        model.addAttribute("user", user);
 
         return "index";
     }
