@@ -17,19 +17,19 @@ import java.util.stream.Collectors;
 @Slf4j
 //@RestController
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/layui/user")
 public class UserController {
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss ");
 
 
     /**
-     * http://localhost:8080/user/index?id=1
+     * http://localhost:8080/user/?id=1
      * @param id
      * @param model
      * @return
      */
-    @GetMapping(path = "/index")
+    @GetMapping(path = "/")
     public String index(int id,Model model){
 
         List<User> users= getUserList();
@@ -38,7 +38,7 @@ public class UserController {
 
         model.addAttribute("user", user);
 
-        return "index";
+        return "user";
     }
 
     /**
