@@ -24,7 +24,7 @@ public class UserController {
 
 
     /**
-     * http://localhost:8080/user/?id=1
+     * http://localhost:8080/layui/user/?id=1
      * @param id
      * @param model
      * @return
@@ -43,7 +43,7 @@ public class UserController {
 
     /**
      * josn格式字符串
-     * url:"http://localhost:8080/user/allStr"
+     * url:"http://localhost:8080/layui/user/allStr"
      * @return
      */
     @ResponseBody
@@ -72,7 +72,7 @@ public class UserController {
 
     /**
      * json对象
-     * url:"http://localhost:8080/user/all"
+     * url:"http://localhost:8080/layui/user/all"
      * @return
      */
     @ResponseBody
@@ -96,7 +96,7 @@ public class UserController {
 
     /**
      * 带参数的get请求
-     * url:"http://localhost:8080/user/getByName?name={name}"
+     * url:"http://localhost:8080/layui/user/getByName?name={name}"
      * @param name
      * @return
      */

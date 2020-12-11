@@ -21,7 +21,13 @@ public class HomeController {
     @GetMapping(path = "/index")
     public String index(int id, Model model){
 
-        model.addAttribute("User", new User());
+        User user = new User();
+        user.setId(1);
+        user.setName("Weslie");
+        user.setAge(12);
+        user.setSex("male");
+        user.setAvatarUrl("/avatar/weslie.jpg");
+        model.addAttribute("user", user);
 
         return "index";
     }

@@ -114,14 +114,14 @@
         var id = getURLId();
 
 
-
         //通过ajax请求初始化表单
         $.ajax({
             type:"GET",
-            url:"/user/getById",
+            url:"/layui/user/getById",
             //data:articleFrom,
-            data:{id:id},
+            data:{id:1},
             dataType:"JSON",
+            async:false,
             success:function (data) {
                 if(data.flag){
                     //初始赋值
@@ -132,13 +132,13 @@
                         //,'age':  data.data.age
                     });
                     var sex =  data.data.sex;
-                    setSexRadio("sex");
+                    setSexRadio(sex);
                     //填充其他信息
-                    $("#avatar").attr("src",data.data.avatarUrl)
+                    //$("#avatar").attr("src",data.data.avatarUrl)
                 }
             }
         });
-
+        //setSexRadio("male");
         //重新加载渲染
         form.render();
 
