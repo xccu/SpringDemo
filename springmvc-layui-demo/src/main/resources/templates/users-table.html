@@ -192,7 +192,16 @@
                 });
             }
             else if(obj.event === 'edit'){  //update事件
-                layer.prompt({
+
+                layer.open({
+                    title:'编辑',
+                    type: 2,
+                    skin: 'layui-layer-rim',
+                    area: ['800px', '560px'],
+                    content: 'user/?id='+data.id
+                });
+
+                /*layer.prompt({
                     formType: 2
                     ,value: data.age
                 }, function(value, index){
@@ -200,15 +209,15 @@
                         age: value
                     });
                     layer.close(index);
-                });
+                });*/
             }
             else if(obj.event === 'detail'){
                 layer.open({
                     title:'用户详细信息',
                     type: 2,
                     skin: 'layui-layer-rim',
-                    area: ['650px', '470px'],
-                    content: 'user/?id='+data.id
+                    area: ['500px', '320px'],
+                    content: 'user/detail/?id='+data.id
                 });
             }
         });

@@ -31,7 +31,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
         //http://localhost:8080/layui/users
         registry.addViewController("/layui/user").setViewName("/users-table");
-        //http://localhost:8080/layui/user-ajax
+        //http://localhost:8080/layui/user-ajax？1
         registry.addViewController("/layui/user-ajax").setViewName("/user-ajax");
     }
 }

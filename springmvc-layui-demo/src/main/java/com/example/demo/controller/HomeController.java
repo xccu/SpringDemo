@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/layui")
 public class HomeController {
 
-    //http://localhost:8080/layui/index
+    //http://localhost:8080/layui/index?id=1
     /*@GetMapping(path = "/index")
     public String index(int id, Model model) {
         return "index";

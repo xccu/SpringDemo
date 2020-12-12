@@ -22,7 +22,6 @@ public class UserController {
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss ");
 
-
     /**
      * http://localhost:8080/layui/user/?id=1
      * @param id
@@ -30,7 +29,7 @@ public class UserController {
      * @return
      */
     @GetMapping(path = "/")
-    public String index(int id,Model model){
+    public String userEdit(int id,Model model){
 
         List<User> users= getUserList();
         User user = users.stream().filter(t->t.getId().equals(id)).findFirst().orElse(null);
@@ -38,7 +37,25 @@ public class UserController {
 
         model.addAttribute("user", user);
 
-        return "user";
+        return "userEdit";
+    }
+
+    /**
+     * http://localhost:8080/layui/user/detail?id=1
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping(path = "/detail")
+    public String userDetail(int id,Model model){
+
+        List<User> users= getUserList();
+        User user = users.stream().filter(t->t.getId().equals(id)).findFirst().orElse(null);
+
+
+        model.addAttribute("user", user);
+
+        return "userDetail";
     }
 
     /**
@@ -152,6 +169,7 @@ public class UserController {
         user.setAge(12);
         user.setSex("male");
         user.setAvatarUrl("/avatar/weslie.jpg");
+        user.setEmail("Weslie@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -160,6 +178,7 @@ public class UserController {
         user.setAge(34);
         user.setSex("male");
         user.setAvatarUrl("/avatar/wolffy.jpg");
+        user.setEmail("wolffy@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -168,6 +187,7 @@ public class UserController {
         user.setAge(11);
         user.setSex("female");
         user.setAvatarUrl("/avatar/tibbie.jpg");
+        user.setEmail("tibbie@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -176,6 +196,7 @@ public class UserController {
         user.setAge(12);
         user.setSex("male");
         user.setAvatarUrl("/avatar/sparky.jpg");
+        user.setEmail("sparky@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -184,6 +205,7 @@ public class UserController {
         user.setAge(10);
         user.setSex("male");
         user.setAvatarUrl("/avatar/paddi.jpg");
+        user.setEmail("paddi@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -192,6 +214,7 @@ public class UserController {
         user.setAge(12);
         user.setSex("female");
         user.setAvatarUrl("/avatar/jonie.jpg");
+        user.setEmail("jonie@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -200,6 +223,7 @@ public class UserController {
         user.setAge(70);
         user.setSex("male");
         user.setAvatarUrl("/avatar/slowy.jpg");
+        user.setEmail("slowy@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -208,6 +232,7 @@ public class UserController {
         user.setAge(33);
         user.setSex("female");
         user.setAvatarUrl("/avatar/wolnie.jpg");
+        user.setEmail("wolnie@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -216,6 +241,7 @@ public class UserController {
         user.setAge(5);
         user.setSex("male");
         user.setAvatarUrl("/avatar/wilie.jpg");
+        user.setEmail("wilie@cpe.com");
         userList.add(user);
 
 
@@ -225,6 +251,7 @@ public class UserController {
         user.setAge(12);
         user.setSex("male");
         user.setAvatarUrl("/avatar/weslie.jpg");
+        user.setEmail("weslie@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -233,6 +260,7 @@ public class UserController {
         user.setAge(34);
         user.setSex("male");
         user.setAvatarUrl("/avatar/wolffy.jpg");
+        user.setEmail("wolffy@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -241,6 +269,7 @@ public class UserController {
         user.setAge(11);
         user.setSex("female");
         user.setAvatarUrl("/avatar/tibbie.jpg");
+        user.setEmail("tibbie@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -249,6 +278,7 @@ public class UserController {
         user.setAge(12);
         user.setSex("male");
         user.setAvatarUrl("/avatar/sparky.jpg");
+        user.setEmail("sparky@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -257,6 +287,7 @@ public class UserController {
         user.setAge(10);
         user.setSex("male");
         user.setAvatarUrl("/avatar/paddi.jpg");
+        user.setEmail("paddi@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -265,6 +296,7 @@ public class UserController {
         user.setAge(12);
         user.setSex("female");
         user.setAvatarUrl("/avatar/jonie.jpg");
+        user.setEmail("jonie@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -273,6 +305,7 @@ public class UserController {
         user.setAge(70);
         user.setSex("male");
         user.setAvatarUrl("/avatar/slowy.jpg");
+        user.setEmail("slowy@cpe.com");
         userList.add(user);
 
         user = new User();
@@ -289,6 +322,7 @@ public class UserController {
         user.setAge(5);
         user.setSex("male");
         user.setAvatarUrl("/avatar/wilie.jpg");
+        user.setEmail("wilie@cpe.com");
         userList.add(user);
 
 
