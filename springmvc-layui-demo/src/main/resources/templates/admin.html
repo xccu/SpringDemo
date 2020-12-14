@@ -15,14 +15,13 @@
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
       <li class="layui-nav-item"><a href="">控制台</a></li>
-      <li class="layui-nav-item"><a href="">商品管理</a></li>
       <li class="layui-nav-item"><a href="">用户</a></li>
       <li class="layui-nav-item">
-        <a href="javascript:;">其它系统</a>
+        <a href="javascript:;">后台模板</a>
         <dl class="layui-nav-child">
-          <dd><a href="">邮件管理</a></dd>
-          <dd><a href="">消息管理</a></dd>
-          <dd><a href="">授权管理</a></dd>
+          <dd><a href="https://www.layui.com/admin/std/dist/views/">iframe版演示</a></dd>
+          <dd><a href="https://www.layui.com/admin/pro/">单页版演示</a></dd>
+          <dd><a href="">移动端演示</a></dd>
         </dl>
       </li>
     </ul>
@@ -45,11 +44,13 @@
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item"><a class="" href="https://www.layui.com/demo/">在线示例</a></li>
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">基本元素</a>
           <dl class="layui-nav-child">
             <dd><a id ="a-button" href="javascript:;">按钮</a></dd>
             <dd><a id ="a-form" href="javascript:";>表单</a></dd>
+            <dd><a id ="a-nav" href="javascript:";>导航/面包屑</a></dd>
             <dd><a href="">超链接</a></dd>
           </dl>
         </li>
@@ -94,24 +95,31 @@ layui.use('element', function(){
   var element = layui.element;
 });
 
+
+
 $('#a-button').on('click', function(){
-  $('#frame').attr('src','button')
+  $('#frame').attr('src','/layui/button')
 });
 
+
 $('#a-form').on('click', function(){
-  $('#frame').attr('src','form')
+  $('#frame').attr('src','/layui/form')
+});
+
+$('#a-nav').on('click', function(){
+  $('#frame').attr('src','/layui/nav')
 });
 
 $('#a-laydate').on('click', function(){
-  $('#frame').attr('src','laydate')
+  $('#frame').attr('src','/layui/laydate')
 });
 
 $('#a-layer').on('click', function(){
-  $('#frame').attr('src','layer')
+  $('#frame').attr('src','/layui/layer')
 });
 
 $('#a-table').on('click', function(){
-  $('#frame').attr('src','table')
+  $('#frame').attr('src','/layui/table')
 });
 
 $('#a-utable').on('click', function(){

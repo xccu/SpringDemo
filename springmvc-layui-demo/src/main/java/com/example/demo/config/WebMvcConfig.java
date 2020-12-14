@@ -19,7 +19,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         //registry.addViewController("/bar/demo1").setViewName("/bar/bar-demo-1");
 
         //http://localhost:8080/layui/table
-        registry.addViewController("/layui/admin").setViewName("/admin");
+        registry.addViewController("/layui").setViewName("/admin");
         //http://localhost:8080/layui/table
         registry.addViewController("/layui/table").setViewName("/table");
         //http://localhost:8080/layui/button
@@ -28,6 +28,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/layui/layer").setViewName("/layer");
         //http://localhost:8080/layui/form
         registry.addViewController("/layui/form").setViewName("/form");
+        //http://localhost:8080/layui/nav
+        registry.addViewController("/layui/nav").setViewName("/nav");
+        //http://localhost:8080/layui/laydate
+        registry.addViewController("/layui/laydate").setViewName("/laydate");
 
         //http://localhost:8080/layui/users
         registry.addViewController("/layui/user").setViewName("/users-table");
