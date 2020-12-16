@@ -30,6 +30,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/layui/form").setViewName("/form");
         //http://localhost:8080/layui/nav
         registry.addViewController("/layui/nav").setViewName("/nav");
+        //http://localhost:8080/layui/icon
+        registry.addViewController("/layui/icon").setViewName("/icon");
         //http://localhost:8080/layui/laydate
         registry.addViewController("/layui/laydate").setViewName("/laydate");
 
