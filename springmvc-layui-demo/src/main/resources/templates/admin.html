@@ -55,8 +55,8 @@
         </a>
         <dl class="layui-nav-child">
           <dd><a id = "a-userinfo" href="javascript:;">基本资料</a></dd>
-          <dd><a href="">安全设置</a></dd>
-          <dd><a href="javascript:;">退出</a></dd>
+          <dd><a id ="a-idcard" href="javascript:";>ID卡</a></dd>
+          <dd><a href="javascript:;">安全设置</a></dd>
         </dl>
       </li>
       <li class="layui-nav-item"><a href="">退出</a></li>
@@ -92,6 +92,7 @@
           <dl class="layui-nav-child">
             <dd><a id ="a-utable" href="javascript:;">用户列表</a></dd>
             <dd><a id ="a-user" href="javascript:";>用户详细信息</a></dd>
+            <dd><a id ="a-idcard-shell" href="javascript:";>ID卡信息</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item"><a href="">云市场</a></li>
@@ -115,8 +116,10 @@
 <script src="/layui.js"></script>
 <script>
 //JavaScript代码区域
-layui.use('element', function(){
-  var element = layui.element;
+layui.use(['element','layer'], function(){
+  var element = layui.element
+          ,layer = layui.layer;
+
 });
 
 $('#a-style-demo').on('click', function(){
@@ -164,14 +167,16 @@ $('#a-utable').on('click', function(){
 });
 
 $('#a-user').on('click', function(){
-  $('#frame').attr('src','/layui/user/?id=1')
+  $('#frame').attr('src','/layui/user/?id=202005250001')
 });
 
 $('#a-userinfo').on('click', function(){
-  $('#frame').attr('src','/layui/user/?id=1')
+  $('#frame').attr('src','/layui/user/?id=202005250001')
 });
 
-
+$('#a-idcard-shell').on('click', function(){
+  $('#frame').attr('src','/layui/idCard-shell')
+});
 </script>
 </body>
 </html>

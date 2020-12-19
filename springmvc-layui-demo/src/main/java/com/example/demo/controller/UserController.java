@@ -29,7 +29,7 @@ public class UserController {
      * @return
      */
     @GetMapping(path = "/")
-    public String userEdit(int id,Model model){
+    public String userEdit(String id,Model model){
 
         List<User> users= getUserList();
         User user = users.stream().filter(t->t.getId().equals(id)).findFirst().orElse(null);
@@ -47,7 +47,7 @@ public class UserController {
      * @return
      */
     @GetMapping(path = "/detail")
-    public String userDetail(int id,Model model){
+    public String userDetail(String id,Model model){
 
         List<User> users= getUserList();
         User user = users.stream().filter(t->t.getId().equals(id)).findFirst().orElse(null);
@@ -56,6 +56,24 @@ public class UserController {
         model.addAttribute("user", user);
 
         return "userDetail";
+    }
+
+    /**
+     * http://localhost:8080/layui/user/idCard?id=202005250001
+     * @param id
+     * @param model
+     * @return
+     */
+    @GetMapping(path = "/idCard")
+    public String userIDCard(String id,Model model){
+
+        List<User> users= getUserList();
+        User user = users.stream().filter(t->t.getId().equals(id)).findFirst().orElse(null);
+
+
+        model.addAttribute("user", user);
+
+        return "idCard";
     }
 
     /**
@@ -139,7 +157,7 @@ public class UserController {
 
     @ResponseBody
     @GetMapping(value = "/getById")
-    public JSONObject getById(Integer id){
+    public JSONObject getById(String id){
 
         Date d = new Date();
         log.info(sdf.format(d)+" /getById:"+id);
@@ -164,165 +182,201 @@ public class UserController {
         User user;
 
         user = new User();
-        user.setId(1);
+        user.setId("202005250001");
         user.setName("Weslie");
         user.setAge(12);
         user.setSex("male");
         user.setAvatarUrl("/avatar/weslie.jpg");
         user.setEmail("Weslie@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(2);
+        user.setId("202005250002");
         user.setName("Wolffy");
         user.setAge(34);
         user.setSex("male");
         user.setAvatarUrl("/avatar/wolffy.jpg");
         user.setEmail("wolffy@cpe.com");
+        user.setNational("wf");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(3);
+        user.setId("202005250003");
         user.setName("Tibbie");
         user.setAge(11);
         user.setSex("female");
         user.setAvatarUrl("/avatar/tibbie.jpg");
         user.setEmail("tibbie@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(4);
+        user.setId("202005250004");
         user.setName("Sparky");
         user.setAge(12);
         user.setSex("male");
         user.setAvatarUrl("/avatar/sparky.jpg");
         user.setEmail("sparky@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(5);
+        user.setId("202005250005");
         user.setName("Paddi");
         user.setAge(10);
         user.setSex("male");
         user.setAvatarUrl("/avatar/paddi.jpg");
         user.setEmail("paddi@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(6);
+        user.setId("202005250006");
         user.setName("Jonie");
         user.setAge(12);
         user.setSex("female");
         user.setAvatarUrl("/avatar/jonie.jpg");
         user.setEmail("jonie@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(7);
+        user.setId("202005250007");
         user.setName("Slowy");
         user.setAge(70);
         user.setSex("male");
         user.setAvatarUrl("/avatar/slowy.jpg");
         user.setEmail("slowy@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(8);
+        user.setId("202005250008");
         user.setName("Wolnie");
         user.setAge(33);
         user.setSex("female");
         user.setAvatarUrl("/avatar/wolnie.jpg");
         user.setEmail("wolnie@cpe.com");
+        user.setNational("wf");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(9);
+        user.setId("202005250009");
         user.setName("Wilie");
         user.setAge(5);
         user.setSex("male");
         user.setAvatarUrl("/avatar/wilie.jpg");
         user.setEmail("wilie@cpe.com");
+        user.setNational("wf");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
 
         user = new User();
-        user.setId(10);
+        user.setId("202005250010");
         user.setName("Weslie");
         user.setAge(12);
         user.setSex("male");
         user.setAvatarUrl("/avatar/weslie.jpg");
         user.setEmail("weslie@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(11);
+        user.setId("202005250011");
         user.setName("Wolffy");
         user.setAge(34);
         user.setSex("male");
         user.setAvatarUrl("/avatar/wolffy.jpg");
         user.setEmail("wolffy@cpe.com");
+        user.setNational("wf");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(12);
+        user.setId("202005250012");
         user.setName("Tibbie");
         user.setAge(11);
         user.setSex("female");
         user.setAvatarUrl("/avatar/tibbie.jpg");
         user.setEmail("tibbie@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(13);
+        user.setId("202005250013");
         user.setName("Sparky");
         user.setAge(12);
         user.setSex("male");
         user.setAvatarUrl("/avatar/sparky.jpg");
         user.setEmail("sparky@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(14);
+        user.setId("202005250014");
         user.setName("Paddi");
         user.setAge(10);
         user.setSex("male");
         user.setAvatarUrl("/avatar/paddi.jpg");
         user.setEmail("paddi@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(15);
+        user.setId("202005250015");
         user.setName("Jonie");
         user.setAge(12);
         user.setSex("female");
         user.setAvatarUrl("/avatar/jonie.jpg");
         user.setEmail("jonie@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(16);
+        user.setId("202005250016");
         user.setName("Slowy");
         user.setAge(70);
         user.setSex("male");
         user.setAvatarUrl("/avatar/slowy.jpg");
         user.setEmail("slowy@cpe.com");
+        user.setNational("gt");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(17);
+        user.setId("202005250017");
         user.setName("Wolnie");
         user.setAge(33);
         user.setSex("female");
         user.setAvatarUrl("/avatar/wolnie.jpg");
+        user.setNational("wf");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
         user = new User();
-        user.setId(18);
+        user.setId("202005250018");
         user.setName("Wilie");
         user.setAge(5);
         user.setSex("male");
         user.setAvatarUrl("/avatar/wilie.jpg");
         user.setEmail("wilie@cpe.com");
+        user.setNational("wf");
+        user.setTel("(123) 456-7890");
         userList.add(user);
 
 

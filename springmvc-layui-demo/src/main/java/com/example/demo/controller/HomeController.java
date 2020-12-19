@@ -22,7 +22,7 @@ public class HomeController {
     public String index(int id, Model model){
 
         User user = new User();
-        user.setId(1);
+        user.setId("202002250001");
         user.setName("Weslie");
         user.setAge(12);
         user.setSex("male");

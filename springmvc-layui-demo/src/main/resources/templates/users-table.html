@@ -27,7 +27,8 @@
 <table id="test" lay-filter="test"></table>
 
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <!--<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>-->
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="idCard">ID卡</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
@@ -72,20 +73,23 @@
                 ,icon: 'layui-icon-tips'
             }]
             ,title: '用户数据表'
-            ,width: 600
-            ,height: 312
+            ,width: 1000
+            ,height: 450
             ,cols: [[ //标题栏
                 {type: 'checkbox', width: 50,LAY_CHECKED: true}
-                ,{field: 'id', title: 'ID', width: 80, sort: true}
-                ,{field: 'name', title: '姓名', width: 120}
+                ,{field: 'id', title: 'ID', width: 140, sort: true}
+                ,{field: 'name', title: '姓名', width: 100}
                 ,{field: 'sex', title: '性别', width: 80}
-                ,{field: 'age', title: '年龄', width: 80}
-                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:180}
+                ,{field: 'power', title: '权限', width: 60,value:'aaa'}
+                ,{field: 'age', title: '年龄', width: 60}
+                ,{field: 'email', title: '邮箱', width: 160}
+                ,{field: 'tel', title: '电话', width: 160}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:200}
 
             ]]
             ,page: true
             ,limits: [3,5,10]
-            ,limit: 3 //每页默认显示的数量
+            ,limit: 5 //每页默认显示的数量
             /*,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据，res为从url中get到的数据
                 var result;
                 console.log(this);
@@ -218,6 +222,15 @@
                     skin: 'layui-layer-rim',
                     area: ['500px', '320px'],
                     content: 'user/detail/?id='+data.id
+                });
+            }
+            else if(obj.event === 'idCard'){
+                layer.open({
+                    title:'',
+                    type: 2,
+                    skin: 'layui-layer-rim',
+                    area: ['428px', '270px'],
+                    content: 'user/idCard/?id='+data.id
                 });
             }
         });
