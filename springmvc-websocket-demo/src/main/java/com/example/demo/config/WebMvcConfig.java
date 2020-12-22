@@ -5,7 +5,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-public class WebMvcConfig  extends WebMvcConfigurerAdapter {
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     /**
      * 配置viewController，为ws.html提供便捷的路径映射(不用创建Controller)
@@ -14,7 +14,7 @@ public class WebMvcConfig  extends WebMvcConfigurerAdapter {
 	 @Override
 	 public void addViewControllers(ViewControllerRegistry registry) {
 
-	 	//http://localhost:8090/
+	 	//http://localhost:8084/
 	 	registry.addViewController("").setViewName("/index");
 	 }
 
