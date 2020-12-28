@@ -14,10 +14,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
 
-        //柱状图
-        //http://localhost:8090/bar/demo1
-        //registry.addViewController("/bar/demo1").setViewName("/bar/bar-demo-1");
-
         //http://localhost:8080/layui/table
         registry.addViewController("/layui").setViewName("/admin");
         //http://localhost:8080/layui/table
@@ -34,15 +30,19 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/layui/icon").setViewName("/icon");
         //http://localhost:8080/layui/laydate
         registry.addViewController("/layui/laydate").setViewName("/laydate");
-        //http://localhost:8080/layui/idCard
-        registry.addViewController("/layui/idCard").setViewName("/idCard");
-        //http://localhost:8080/layui/idCard
-        registry.addViewController("/layui/idCard-shell").setViewName("/idCard-shell");
+        //http://localhost:8080/layui/badge
+        registry.addViewController("/layui/badge").setViewName("/badge");
+        //http://localhost:8080/layui/progress
+        registry.addViewController("/layui/progress").setViewName("/progress");
 
         //http://localhost:8080/layui/users
         registry.addViewController("/layui/user").setViewName("/users-table");
         //http://localhost:8080/layui/user-ajax？1
         registry.addViewController("/layui/user-ajax").setViewName("/user-ajax");
+        //http://localhost:8080/layui/idCard
+        registry.addViewController("/layui/idCard").setViewName("/idCard");
+        //http://localhost:8080/layui/idCard
+        registry.addViewController("/layui/idCard-shell").setViewName("/idCard-shell");
     }
 }
 
