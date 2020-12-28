@@ -13,7 +13,7 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
-    <div class="layui-logo">layui 后台布局</div>
+    <div id="header-logo" class="layui-logo">layui 后台布局</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
       <li class="layui-nav-item layui-hide-xs">
@@ -60,12 +60,17 @@
           <dd><a href="javascript:;">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退出</a></li>
+      <!--<li class="layui-nav-item"><a href="">退出</a></li>-->
+      <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+        <a href="javascript:;" layadmin-event="about"><i class="layui-icon layui-icon-more-vertical"></i></a>
+      </li>
+
     </ul>
   </div>
   
   <div  id="d-left" class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
+      <div id="scroll-logo" class="layui-logo" style="display: none">layui 后台布局</div>
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item"><a class="" href="https://www.layui.com/demo/"><i class="layui-icon layui-icon-website" style="margin-right: 10px"></i>在线示例</a></li>
@@ -125,15 +130,24 @@ layui.use(['element','layer'], function(){
 
 });
 
+//切换为在线示例样式
 $('#a-style-demo').on('click', function(){
   $("#l-style").remove()
   $('#d-left').attr('class','layui-side layui-bg-black')
   $('#l-demo').attr('style','')
+
+  $("#header-logo").attr("style","display:block");//显示div
+  $("#scroll-logo").attr("style","display:none;");//隐藏div
 });
 
+//切换为后台模板样式
 $('#a-style-temp').on('click', function(){
   $('head').append("<link id=\"l-style\" rel=\"stylesheet\" href=\'/css/admin.css\'>")
   $('#d-left').attr('class','layui-side layui-side-menu')
+
+  $("#header-logo").attr("style","display:none");//隐藏div
+  $("#scroll-logo").attr("style","display:block;");//显示div
+
 });
 
 $('#a-button').on('click', function(){
