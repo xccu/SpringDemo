@@ -17,17 +17,17 @@
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
       <li class="layui-nav-item layui-hide-xs">
-        <a href="">
+        <a href="javascript:;" title="控制台">
           <i class="layui-icon layui-icon-console"></i>
         </a>
       </li>
       <li class="layui-nav-item layui-hide-xs">
-        <a href="">
+        <a href="javascript:;" title="用户">
           <i class="layui-icon layui-icon-user"></i>
         </a>
       </li>
       <li class="layui-nav-item layui-hide-xs" lay-unselect="">
-        <a href="javascript:;" layadmin-event="fullscreen">
+        <a href="javascript:;" layadmin-event="fullscreen" class="fullscreen" title="全屏/退出全屏">
           <i class="layui-icon layui-icon-screen-full"></i>
         </a>
       </li>
@@ -62,7 +62,7 @@
       </li>
       <!--<li class="layui-nav-item"><a href="">退出</a></li>-->
       <li class="layui-nav-item layui-hide-xs" lay-unselect="">
-        <a href="javascript:;" layadmin-event="about"><i class="layui-icon layui-icon-more-vertical"></i></a>
+        <a href="javascript:;" layadmin-event="about" title="关于"><i class="layui-icon layui-icon-more-vertical"></i></a>
       </li>
 
     </ul>
@@ -120,8 +120,10 @@
     © layui.com - 底部固定区域
   </div>
 </div>
+
 <script src="/js/jquery.min.js"></script>
 <script src="/layui.js"></script>
+<script src="/js/fullScreen.js"></script>
 <script>
 //JavaScript代码区域
 layui.use(['element','layer'], function(){
@@ -202,6 +204,7 @@ $('#a-userinfo').on('click', function(){
 $('#a-idcard-shell').on('click', function(){
   $('#frame').attr('src','/layui/idCard-shell')
 });
+
 </script>
 </body>
 </html>
