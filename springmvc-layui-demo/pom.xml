@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.0</version>
+        <version>2.3.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
+    <artifactId>springmvc-layui-demo</artifactId>
+    <version>0.0.1</version>
+    <name>springmvc-layui-demo</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -61,7 +61,13 @@
         </dependency>
     </dependencies>
 
+    <!--执行package指令时打包为war（默认打包为jar）-->
+    <packaging>war</packaging>
+
+    <!--编译配置-->
     <build>
+        <!--生成jar/war包的名称-->
+        <finalName>springmvc-layui-demo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
