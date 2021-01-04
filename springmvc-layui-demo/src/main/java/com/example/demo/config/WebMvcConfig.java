@@ -35,6 +35,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/layui/badge").setViewName("badge");
         //http://localhost:8080/layui/progress
         registry.addViewController("/layui/progress").setViewName("progress");
+        //http://localhost:8080/layui/upload
+        registry.addViewController("/layui/upload").setViewName("upload");
 
         //http://localhost:8080/layui/users
         registry.addViewController("/layui/user").setViewName("users-table");
