@@ -81,7 +81,7 @@ public class UserController {
      * url:"http://localhost:8080/layui/user/allStr"
      * @return
      */
-    @ResponseBody
+    //@ResponseBody
     @GetMapping(value = "/allStr")
     public String getAllUserStr() {
         String result =
@@ -135,7 +135,7 @@ public class UserController {
      * @param name
      * @return
      */
-    @ResponseBody
+    //@ResponseBody
     @GetMapping(value = "/getByName")
     public JSONObject getByName(String name){
 
@@ -155,7 +155,7 @@ public class UserController {
         return json;
     }
 
-    @ResponseBody
+    //@ResponseBody
     @GetMapping(value = "/getById")
     public JSONObject getById(String id){
 

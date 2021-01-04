@@ -38,71 +38,68 @@
         }
     </style>
 </head>
-
+<body>
 <div class="layui-card" style="width: 428px;height:270px;">
     <div class="layadmin-contact-box">
-    <table style="width: 428px;height:270px">
-        <tr>
-            <td style="background:#333;width: 190px; text-align:center; " align="center">
-                <div style="width: 133px; height: 133px; margin: 0 auto">
-                    <img th:src="${user.avatarUrl}" class="layui-nav-img" style="width: 133px; height: 133px;text-align:center">
-                </div>
-                <div style="margin-top:30px; text-align: center; color:#999; font-size:13px">ID:[[${user.id}]]</div>
-            </td>
-            <!--<td valign="top" style="background-color: #EDFFFF;background-image: url(/images/gt-Watermark.png)">-->
-            <td valign="top" th:style="'background-color: #EDFFFF;background-image: url(/images/'+ ${user.national}+'-Watermark.png)'">
-                <div style="font-size:20px; font-family: Arial; text-align: center;margin-top: 15px">IDENTIFICATION CARD</div>
-                <div class="underline"></div>
-
-                <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6" style="width: 250px;float: right">
-
-                    <div style="margin-top: 15px;margin-left: 40px">
-                        <label class="title">Name:</label>
-                        <label class="data">[[${user.name}]]</label>
+        <table style="width: 428px;height:270px">
+            <tr>
+                <td style="background:#333;width: 190px; text-align:center; " align="center">
+                    <div style="width: 133px; height: 133px; margin: 0 auto">
+                        <img th:src="${user.avatarUrl}" class="layui-nav-img" style="width: 133px; height: 133px;text-align:center">
                     </div>
-                    <!--<div class="underline"></div>-->
+                    <div style="margin-top:30px; text-align: center; color:#999; font-size:13px">ID:[[${user.id}]]</div>
+                </td>
+                <!--<td valign="top" style="background-color: #EDFFFF;background-image: url(/images/gt-Watermark.png)">-->
+                <td valign="top" th:style="'background-color: #EDFFFF;background-image: url(/images/'+ ${user.national}+'-Watermark.png)'">
+                    <div style="font-size:20px; font-family: Arial; text-align: center;margin-top: 15px">IDENTIFICATION CARD</div>
+                    <div class="underline"></div>
 
-                    <div style="margin-top: 3px;margin-left: 40px">
-                        <label class="title">Sex:</label>
-                        <label class="data">[[${user.sex}]]</label>
+                    <div class="layui-col-md8 layadmin-padding-left20 layui-col-sm6" style="width: 250px;float: right">
+
+                        <div style="margin-top: 15px;margin-left: 40px">
+                            <label class="title">Name:</label>
+                            <label class="data">[[${user.name}]]</label>
+                        </div>
+                        <!--<div class="underline"></div>-->
+
+                        <div style="margin-top: 3px;margin-left: 40px">
+                            <label class="title">Sex:</label>
+                            <label class="data">[[${user.sex}]]</label>
+                        </div>
+
+                        <div style="margin-top: 15px;margin-left: 40px">
+                            <label class="title">Power:</label>
+                            <label class="data" style="font-size: 14px">Admin</label>
+                        </div>
+
+                        <div style="margin-top: 20px; margin-left: 40px">
+                            <label class="title">E-mail:</label>
+                            <label class="data" style="font-size: 14px">[[${user.email}]]</label>
+                        </div>
+
+                        <div style="margin-top: 3px; margin-left: 40px;">
+                            <label class="title">Tel:</label>
+                            <label class="data" style="font-size: 14px">(123) 456-7890</label>
+                        </div>
+
+                        <div class="underline" style="margin-top: 15px;"></div>
+
+                        <div style="margin-top: 12px; margin-left: 20px;">
+                            <label style="font-size: 10px">Date of issue: 2020/01/01</label>
+                        </div>
+
+                        <!--<div class="layadmin-address" style="margin-top: 15px">
+                            <strong></strong>
+                            <br >Weslie@cpe.com<br>Weibo: https://weibo.com/<br>
+                            <addr title="phone">Tel:</addr>
+                            (123) 456-7890
+                        </div>-->
+
                     </div>
-
-
-                    <div style="margin-top: 15px;margin-left: 40px">
-                        <label class="title">Power:</label>
-                        <label class="data" style="font-size: 14px">Admin</label>
-                    </div>
-
-                    <div style="margin-top: 20px; margin-left: 40px">
-                        <label class="title">E-mail:</label>
-                        <label class="data" style="font-size: 14px">[[${user.email}]]</label>
-                    </div>
-
-                    <div style="margin-top: 3px; margin-left: 40px;">
-                        <label class="title">Tel:</label>
-                        <label class="data" style="font-size: 14px">(123) 456-7890</label>
-                    </div>
-                    <div class="underline" style="margin-top: 15px;"></div>
-
-                    <div style="margin-top: 12px; margin-left: 20px;">
-                        <label style="font-size: 10px">Date of issue: 2020/01/01</label>
-                    </div>
-
-                    <!--<div class="layadmin-address" style="margin-top: 15px">
-                        <strong></strong>
-                        <br >Weslie@cpe.com<br>Weibo: https://weibo.com/<br>
-                        <addr title="phone">Tel:</addr>
-                        (123) 456-7890
-                    </div>-->
-
-                </div>
-            </td>
-        </tr>
-    </table>
+                </td>
+            </tr>
+        </table>
     </div>
-
 </div>
-
-
 </body>
 </html>
