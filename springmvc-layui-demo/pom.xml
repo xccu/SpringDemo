@@ -95,7 +95,7 @@
                     <include>static/**</include>
                     <include>mapper/**</include>
                     <include>freemark/**</include>
-                    <include>spy.properties</include>
+                    <include>application.properties</include>
                 </includes>
             </resource>
         </resources>
@@ -201,7 +201,7 @@
                                         <include>static/**</include>
                                         <include>mapper/**</include>
                                         <include>freemark/**</include>
-                                        <include>spy.properties</include>
+                                        <include>application.properties</include>
                                     </includes>
                                 </resource>
                             </resources>
