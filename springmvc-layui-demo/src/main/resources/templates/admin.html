@@ -93,6 +93,7 @@
             <dd><a id ="a-laydate" href="javascript:;">日期与时间选择</a></dd>
             <dd><a id ="a-table" href="javascript:;">数据表格</a></dd>
             <dd><a id ="a-upload" href="javascript:;">文件上传</a></dd>
+            <dd><a id ="a-code" href="javascript:;">代码修饰器</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item layui-nav-itemed">
@@ -187,6 +188,10 @@ $('#a-layer').on('click', function(){
 
 $('#a-upload').on('click', function(){
   $('#frame').attr('src','/layui/upload')
+});
+
+$('#a-code').on('click', function(){
+  $('#frame').attr('src','/layui/code')
 });
 
 
