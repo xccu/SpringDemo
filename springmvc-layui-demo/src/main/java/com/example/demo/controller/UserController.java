@@ -37,7 +37,7 @@ public class UserController {
 
         model.addAttribute("user", user);
 
-        return "userEdit";
+        return "application/userEdit";
     }
 
     /**
@@ -55,7 +55,7 @@ public class UserController {
 
         model.addAttribute("user", user);
 
-        return "userDetail";
+        return "application/userDetail";
     }
 
     /**
@@ -73,7 +73,7 @@ public class UserController {
 
         model.addAttribute("user", user);
 
-        return "idCard";
+        return "application/idCard";
     }
 
     /**
