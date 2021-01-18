@@ -1,11 +1,13 @@
 package com.example.demo.model;
 
+import javax.persistence.Table;
 import lombok.Data;
 
 @Data
 public class User {
-    private Long id;
+    private Integer id;
     private String name;
+    private String password;
     private Integer age;
-    private String email;
+    private String sex;
 }

@@ -7,6 +7,7 @@ import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,7 @@ public class UserController {
     private UserMapper userMapper;
 
     @Autowired
+    @Qualifier("datasource")
     private DataSource dataSource;
 
     /**
@@ -96,8 +98,7 @@ public class UserController {
 
         User user = new User();
         user.setAge(12);
-        user.setId((long)6);
-        user.setEmail("");
+        user.setSex("male");
         user.setName("test");
 
         int result = userMapper.insert(user);
