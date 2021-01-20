@@ -83,6 +83,7 @@
             <dd><a id ="a-icon" href="javascript:";>图标</a></dd>
             <dd><a id ="a-badge" href="javascript:";>徽章</a></dd>
             <dd><a id ="a-progress" href="javascript:";>进度条</a></dd>
+            <dd><a id ="a-panel" href="javascript:";>面板</a></dd>
             <dd><a id ="a-auxiliar" href="javascript:";>辅助元素</a></dd>
             <dd><a href="">超链接</a></dd>
           </dl>
@@ -177,6 +178,10 @@ $('#a-badge').on('click', function(){
 
 $('#a-progress').on('click', function(){
     $('#frame').attr('src','/layui/progress')
+});
+
+$('#a-panel').on('click', function(){
+  $('#frame').attr('src','/layui/panel')
 });
 
 $('#a-auxiliar').on('click', function(){
