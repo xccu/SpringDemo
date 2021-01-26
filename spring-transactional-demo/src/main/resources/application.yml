@@ -1,0 +1,21 @@
+# Tomcat Config
+server:
+  port: 8080
+
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+  #jpa:
+  #  hibernate:
+      #自动维护数据库表（none,create,update,validate,create-drop）
+  #    ddl-auto: none
+    #控制台输出真实的sql语句
+    show-sql: true
+  jackson:
+    serialization:
+      #controller输出json自动格式化
+      indent_output: true
