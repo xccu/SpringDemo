@@ -125,9 +125,9 @@ public class DataController {
 
 	@RequestMapping("/auto")
 	public Page<User> auto(User user){
-		//Page<User> pageUser = userRepository.findByAuto(user, PageRequest.of(0, 10));
-		//return pageUser;
-		return null;
+		Page<User> pageUser = userRepository.findByAuto(user, PageRequest.of(0, 10));
+		return pageUser;
+		//return null;
 	}
 
 }
