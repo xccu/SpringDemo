@@ -80,6 +80,7 @@
             <dd><a id ="a-button" href="javascript:;">按钮</a></dd>
             <dd><a id ="a-form" href="javascript:";>表单</a></dd>
             <dd><a id ="a-nav" href="javascript:";>导航/面包屑</a></dd>
+            <dd><a id ="a-tab" href="javascript:";>选项卡</a></dd>
             <dd><a id ="a-icon" href="javascript:";>图标</a></dd>
             <dd><a id ="a-badge" href="javascript:";>徽章</a></dd>
             <dd><a id ="a-progress" href="javascript:";>进度条</a></dd>
@@ -166,6 +167,10 @@ $('#a-form').on('click', function(){
 
 $('#a-nav').on('click', function(){
   $('#frame').attr('src','/layui/nav')
+});
+
+$('#a-tab').on('click', function(){
+  $('#frame').attr('src','/layui/tab')
 });
 
 $('#a-icon').on('click', function(){
