@@ -123,11 +123,16 @@ public class DataController {
 		return pagePeople;
 	}
 
+	/**
+	 * 无构造条件查询：http://localhost:8080/auto
+	 * 查询名字中包含W的记录：http://localhost:8080/auto?name=W
+	 * @param user
+	 * @return
+	 */
 	@RequestMapping("/auto")
 	public Page<User> auto(User user){
 		Page<User> pageUser = userRepository.findByAuto(user, PageRequest.of(0, 10));
 		return pageUser;
-		//return null;
 	}
 
 }

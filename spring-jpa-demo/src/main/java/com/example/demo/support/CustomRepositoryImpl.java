@@ -9,6 +9,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
+/**
+ * 定义实现类
+ * @param <T>
+ * @param <ID>
+ */
 
 public class CustomRepositoryImpl<T, ID extends Serializable>
         extends SimpleJpaRepository<T, ID> implements CustomRepository<T, ID> {

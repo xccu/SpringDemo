@@ -35,7 +35,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/layui/panel").setViewName("element/panel");
         //http://localhost:8080/layui/tab
         registry.addViewController("/layui/tab").setViewName("element/tab");
-
+        //http://localhost:8080/layui/anim
+        registry.addViewController("/layui/anim").setViewName("element/anim");
 
         //http://localhost:8080/layui/layer
         registry.addViewController("/layui/layer").setViewName("modules/layer");
