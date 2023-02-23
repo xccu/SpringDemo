@@ -33,8 +33,8 @@ public class ApiClientDemoApplication implements ApplicationRunner  {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		//restTemplateTest();
-		feginTest();
+		restTemplateTest();
+		//feginTest();
 	}
 
 	private void restTemplateTest(){
@@ -52,6 +52,8 @@ public class ApiClientDemoApplication implements ApplicationRunner  {
 		user.setSex("male");
 
 		apiService.post("http://localhost:8080/user/adduser",user);
+
+		apiService.put("http://localhost:8080/user/updateone",user);
 	}
 
 	private FeignService init()

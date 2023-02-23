@@ -67,7 +67,8 @@ public class UserController {
      */
     // == @RequestMapping(value="/user/adduser",method=RequestMethod.POST)
     @PostMapping("/adduser")
-    public void addStudentRestful(User user) {
+    public void addStudentRestful(@RequestBody User user) {
+        System.out.println("/adduser");
         System.out.println(user);
     }
 
@@ -81,8 +82,9 @@ public class UserController {
      */
     // == @RequestMapping(value="/addone",method=RequestMethod.PUT)
     @PutMapping("/updateone")
-    public void updateUser(User user) {
-
+    public void updateUser(@RequestBody User user) {
+        System.out.println("/updateone");
+        System.out.println(user);
     }
 
 }
