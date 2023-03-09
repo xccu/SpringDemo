@@ -85,8 +85,58 @@ Servlet生命周期是Tomcat容器维护的
             3 响应体：响应的实际内容（如请求的html页面等）
 
 5.会话
+    1 http是无状态的
+        - 无状态：多次请求，服务器无法判断是否是同一客户端(浏览器)发出的
+        - 带来的问题举例:第一次请求添加购物车，第二次请求结账，两次请求无法区分是否是同一个用户发出，会导致混乱
+        - 解决：会话跟踪技术
+    2 会话跟踪技术
+        - 客户端第一次发请求给服务器，服务器获取Session，获取不到，则创建新的然后响应给客户端
+        - 下次客户端发请求给服务器时，会把SessionID发给服务器，服务器能获取到并判断本次请求和上次是同一客户端
+        - 常用API：
+            - request.getSession() - 获取当前会话，没有则创建型的会话
+            - request.getSession(true) - 效果与不带参数相同
+            - request.getSession(false) - 获取当前会话，没有则返回null，不创建新的
+            - session.getId() - 获取sessionID
+            - session.isNew() - 判断当前session是否是新的
+            - session.getMaxInactiveInterval() - session的非激活间隔时长，默认1800s
+            - session.setMaxInactiveInterval() - 设置session的最大非激活间隔时长
+            - session.inValidate() - 强制让会话立即失效
+    3 session保存作用域
+        - session保存作用域适合具体某一个Session对应的
+        - 常用API:
+            - void setAttribute(k,v)
+            - Object getAttribute(k)
+            - void removeAttribute(k)
+
+
+
 
 6.Thymeleaf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 常见响应状态码:
