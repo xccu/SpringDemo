@@ -14,11 +14,14 @@
 						<th class="w20">库存</th>
 						<th>操作</th>
 					</tr>
+					<!--if分支语句：没有数据-->
 					<tr th:if="${#lists.isEmpty(session.fruitList)}">
 						<td colspan="4">对不起，库存为空！</td>
 					</tr>
+					<!--unless语句：有数据-->
+					<!--each遍历，临时变量fruit，从Session作用域获取-->
 					<tr th:unless="${#lists.isEmpty(session.fruitList)}" th:each="fruit : ${session.fruitList}">
-						<td th:text="${fruit.fname}">苹果</td>
+						<td th:text="${fruit.fname}">苹果</td> <!--thymeleaf渲染会覆盖文本内容-->
 						<td th:text="${fruit.price}">5</td>
 						<td th:text="${fruit.fcount}">20</td>
 						<td><img src="imgs/del.jpg" class="delImg"/></td>

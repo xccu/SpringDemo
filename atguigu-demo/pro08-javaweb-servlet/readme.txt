@@ -133,7 +133,10 @@ Servlet生命周期是Tomcat容器维护的
         //所以真实的视图名称是：      /       index       .html
         super.processTemplate("index",request,response);
     6） 使用thymeleaf的标签
-      th:if   ,  th:unless   , th:each   ,   th:text
+        th:if         - 条件判断
+        th:unless     - 否则（等同于else）
+        th:each       - 循环遍历
+        th:text       - 设置内部文本
 
 
 
