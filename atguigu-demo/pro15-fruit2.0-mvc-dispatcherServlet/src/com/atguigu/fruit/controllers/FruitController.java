@@ -22,6 +22,7 @@ public class FruitController extends ViewBaseServlet {
 
     private ServletContext servletContext ;
 
+    //设置Servlet上下文
     public void setServletContext(ServletContext servletContext) throws ServletException {
         this.servletContext = servletContext;
         super.init(servletContext);

@@ -19,25 +19,26 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.Map;
 
 //中央控制器类
 //*.do表示匹配所有以.do结尾的请求
 @WebServlet("*.do")
-public class DispatcherServlet extends HttpServlet {
+public class DispatcherServlet extends ViewBaseServlet{
 
     private Map<String,Object> beanMap = new HashMap<>();
 
-    public DispatcherServlet() {
-
+    public DispatcherServlet(){
     }
 
-    //解析加载applicationContext.xml配置文件
-    public void init(){
-        try {
+    public void init() throws ServletException {
+        super.init();
 
-            System.out.println("DispatcherServlet init config...");
+        System.out.println("DispatcherServlet init config...");
+        System.out.println("get beans:");
+        try {
             InputStream inputStream = getClass().getClassLoader().getResourceAsStream("applicationContext.xml");
             //1.创建DocumentBuilderFactory
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -59,15 +60,11 @@ public class DispatcherServlet extends HttpServlet {
                     String className = beanElement.getAttribute("class");
                     //创建bean实例
                     Class controllerBeanClass = Class.forName(className);
-                    Object beanObj = controllerBeanClass.newInstance();
+                    Object beanObj = controllerBeanClass.newInstance() ;
 
-                    //反射调用setServletContext设置Servlet上下文
-                    Method setServletContextMethod = controllerBeanClass.getDeclaredMethod("setServletContext",ServletContext.class);
-                    setServletContextMethod.invoke(beanObj , this.getServletContext());
-
-                    //System.out.println("bean:" +className);
+                    System.out.println(className);
                     //bean实例写入map
-                    beanMap.put(beanId , beanObj) ;
+                    beanMap.put(beanId , beanObj);
                 }
             }
         } catch (ParserConfigurationException e) {
@@ -81,10 +78,6 @@ public class DispatcherServlet extends HttpServlet {
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
     }
@@ -103,9 +96,7 @@ public class DispatcherServlet extends HttpServlet {
         int lastDotIndex = servletPath.lastIndexOf(".do") ;
         servletPath = servletPath.substring(0,lastDotIndex);
 
-        //得到bean实例
         Object controllerBeanObj = beanMap.get(servletPath);
-
 
         String operate = request.getParameter("operate");
         if(StringUtil.isEmpty(operate)){
@@ -113,20 +104,73 @@ public class DispatcherServlet extends HttpServlet {
         }
 
         try {
+            Method[] methods = controllerBeanObj.getClass().getDeclaredMethods();
+            for(Method method : methods){
+                if(operate.equals(method.getName())){
+                    //1.统一获取请求参数
 
-            //输出operate,请求类型和url
-            System.out.println("operate:" + operate+"\t"+request.getMethod()+":"+request.getServletPath());
+                    //1-1.获取当前方法的参数，返回参数数组
+                    /*
+                    获取到的方法参数名：arg0,arg1,arg2...
+                    request.getParameter(parameterName);将无法获取参数
+                    java8以后的解决方法（ideal）:
+                        File->Settings->Build,Execution,Deployment->Compiler->java Compiler->Additional command line parameters
+                        添加:-parameters
+                     */
+                    Parameter[] parameters = method.getParameters();
+                    //1-2.parameterValues 用来承载参数的值
+                    Object[] parameterValues = new Object[parameters.length];
+                    for (int i = 0; i < parameters.length; i++) {
+                        Parameter parameter = parameters[i];
+                        String parameterName = parameter.getName() ;
+                        //如果参数名是request,response,session 那么就不是通过请求中获取参数的方式了
+                        if("request".equals(parameterName)){
+                            parameterValues[i] = request ;
+                        }else if("response".equals(parameterName)){
+                            parameterValues[i] = response ;
+                        }else if("session".equals(parameterName)){
+                            parameterValues[i] = request.getSession() ;
+                        }else{
+                            //从请求中获取参数值
+                            String parameterValue = request.getParameter(parameterName);
+                            String typeName = parameter.getType().getName();
 
-            //通过方法名称获取方法
-            Method method = controllerBeanObj.getClass().getDeclaredMethod(operate,HttpServletRequest.class,HttpServletResponse.class);
-            if(method!=null){
-                method.setAccessible(true);
-                method.invoke(controllerBeanObj,request,response);
+                            Object parameterObj = parameterValue ;
+
+                            if(parameterObj!=null) {
+                                if ("java.lang.Integer".equals(typeName)) {
+                                    parameterObj = Integer.parseInt(parameterValue);
+                                }
+                            }
+
+                            parameterValues[i] = parameterObj ;
+                        }
+                    }
+
+                    //输出operate,请求类型和url
+                    System.out.println("operate:" + operate+"\t"+request.getMethod()+":"+request.getServletPath());
+
+                    //2.controller组件中的方法调用
+                    method.setAccessible(true);
+                    Object returnObj = method.invoke(controllerBeanObj,parameterValues);
+
+                    System.out.println("return:"+returnObj);
+                    //3.视图处理
+                    String methodReturnStr = (String)returnObj ;
+                    if(methodReturnStr.startsWith("redirect:")){        //比如：  redirect:fruit.do
+                        String redirectStr = methodReturnStr.substring("redirect:".length());
+                        response.sendRedirect(redirectStr);
+                    }else{
+                        super.processTemplate(methodReturnStr,request,response);    // 比如：  "edit"
+                    }
+                }
+            }
+
+            /*
             }else{
                 throw new RuntimeException("operate值非法!");
             }
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            */
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -134,3 +178,5 @@ public class DispatcherServlet extends HttpServlet {
         }
     }
 }
+
+// 常见错误： IllegalArgumentException: argument type mismatch
