@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace要和mapper接口的全类名保持一致-->
+<mapper namespace="com.atguigu.mybatis.mapper.UserMapper">
+    <!--int insertUser();-->
+    <!--SQL语句的id要和mapper接口中的方法名一致-->
+    <insert id="insertUser">insert into t_user values(null,'张三','123',23,'女','123@test.com')</insert>
+
+    <!--int updateUser();-->
+    <update id="updateUser">update t_user set username='ybc',password='123' where id = 5</update>
+
+    <!--int deleteUser();-->
+    <delete id="deleteUser">delete from t_user where id = 6</delete>
+
+    <!--User getUserById();-->
+    <select id="getUserById" resultType="com.atguigu.mybatis.pojo.User">select * from t_user where id = 4</select>
+
+    <!--List<User> getAllUser();-->
+    <select id="getAllUser" resultType="com.atguigu.mybatis.pojo.User">select * from t_user</select>
+
+    <!--int getCount();-->
+    <select id="getCount" resultType="_integer">select count(id) from t_user</select>
+
+    <!--Map<String, Object> getAllUserToMap();-->
+    <select id="getAllUserToMap" resultType="map">select * from t_user</select>
+
+    <!--Map<String, Object> getAllUserToMap();-->
+    <select id="getAllUserToMap_new" resultType="map">select * from t_user</select>
+
+    <!--List<User> testMohu(@Param("mohu") String mohu);-->
+    <!--select * from t_user where username like '%${mohu}%'-->
+    <!--select * from t_user where username like concat('%',#{mohu},'%')-->
+    <!--<select id="testLike" resultType="com.atguigu.mybatis.pojo.User">select * from t_user where username like "%"#{mohu}"%"</select>-->
+</mapper>

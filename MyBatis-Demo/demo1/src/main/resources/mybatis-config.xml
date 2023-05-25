@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--引入properties文件，此时就可以${属性名}的方式访问属性值-->
+    <properties resource="jdbc.properties"></properties>
+
+    <!--设置连接数据库的环境-->
+    <environments default="development"> <!--default设置默认使用环境id-->
+
+
+        <!--
+            environment：设置具体的连接数据库的环境信息
+                属性：
+                   id：设置环境的唯一标识，可通过environments标签中的default设置某一个环境的id，表示默认使用的环境
+
+            transactionManager：设置事务管理方式
+                属性：
+                   type：设置事务管理方式，type="JDBC|MANAGED"
+                   type="JDBC"：设置当前环境的事务管理都必须手动处理
+                   type="MANAGED"：设置事务被管理，例如spring中的AOP
+
+            dataSource：设置数据源
+                属性：
+                    type：设置数据源的类型，type="POOLED|UNPOOLED|JNDI" type="POOLED"：使用数据库连接池，即会将创建的连接进行缓存，下次使用可以从缓存中直接获取，不需要重新创建
+                                          type="UNPOOLED"：不使用数据库连接池，即每次使用连接都需要重新创建
+                                          type="JNDI"：调用上下文中的数据源
+        -->
+
+        <!--开发环境-->
+        <environment id="development">  <!--设置具体的连接数据库的环境信息 id：设置环境的唯一标识，可通过environments标签中的default设置某一个环境的id，表示默认使用的环境-->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <!--设置驱动类的全类名-->
+                <property name="driver" value="${jdbc.driver}"/> <!--${jdbc.driver}:从jdbc.properties中读取-->
+                <!--设置连接数据库的连接地址-->
+                <property name="url" value="${jdbc.url}"/>
+                <!--设置连接数据库的用户名-->
+                <property name="username" value="${jdbc.username}"/>
+                <!--设置连接数据库的密码-->
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+
+        <!--测试环境-->
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/MyBatis"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <!--引入映射文件-->
+    <mappers>
+        <mapper resource="mappers/UserMapper.xml"/>
+    </mappers>
+</configuration>
