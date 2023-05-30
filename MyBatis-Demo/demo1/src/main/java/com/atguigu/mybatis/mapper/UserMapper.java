@@ -83,5 +83,5 @@ public interface UserMapper {
      * @param mohu
      * @return
      */
-   /* List<User> testLike(@Param("mohu") String mohu);*/
+   List<User> testLike(@Param("mohu") String mohu);
 }

@@ -65,8 +65,8 @@ public class MyBatisTest {
 
         Map<String, Object> map = mapper.getAllUserToMap_new();
 
-        /*List<User> users = mapper.testLike("张");
-        users.forEach(item -> System.out.println(item));*/
+        List<User> users = mapper.testLike("张");
+        users.forEach(item -> System.out.println(item));
         //map.forEach(item -> System.out.println(item));
     }
 

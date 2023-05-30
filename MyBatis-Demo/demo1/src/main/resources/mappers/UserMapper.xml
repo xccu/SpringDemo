@@ -32,5 +32,5 @@
     <!--List<User> testMohu(@Param("mohu") String mohu);-->
     <!--select * from t_user where username like '%${mohu}%'-->
     <!--select * from t_user where username like concat('%',#{mohu},'%')-->
-    <!--<select id="testLike" resultType="com.atguigu.mybatis.pojo.User">select * from t_user where username like "%"#{mohu}"%"</select>-->
+    <select id="testLike" resultType="com.atguigu.mybatis.pojo.User">select * from t_user where username like "%"#{mohu}"%"</select>
 </mapper>
