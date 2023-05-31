@@ -8,6 +8,9 @@
     <!--SQL语句的id要和mapper接口中的方法名一致-->
     <insert id="insertUser">insert into t_user values(null,'张三','123',23,'女','123@test.com')</insert>
 
+    <!--int insertUser(User user);-->
+    <insert id="insertUser2" useGeneratedKeys="true" keyProperty="id">insert into t_user values(null,#{username},#{password},#{age},#{sex})</insert>
+
     <!--int updateUser();-->
     <update id="updateUser">update t_user set username='ybc',password='123' where id = 5</update>
 
@@ -33,4 +36,7 @@
     <!--select * from t_user where username like '%${mohu}%'-->
     <!--select * from t_user where username like concat('%',#{mohu},'%')-->
     <select id="testLike" resultType="com.atguigu.mybatis.pojo.User">select * from t_user where username like "%"#{mohu}"%"</select>
+
+    <!--int deleteMore(@Param("ids") String ids);-->
+    <delete id="deleteBatch">delete from t_user where id in (${ids})</delete>
 </mapper>

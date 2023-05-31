@@ -51,12 +51,25 @@ public class MyBatisTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+
         //mapper.updateUser();
         //mapper.deleteUser();
+        User u = new User();
+        u.setAge(20);
+        u.setEmail("123@test.com");
+        u.setPassword("123");
+        u.setSex("m");
+        u.setUsername("user1");
+        int insertCount = mapper.insertUser2(u);
+        System.out.println("InsertCount:"+insertCount);
+
         User user = mapper.getUserById(4);
         System.out.println(user);
+
         int count = mapper.getCount();
         System.out.println(count);
+
         List<User> list = mapper.getAllUser();
         list.forEach(item -> System.out.println(item));
 
@@ -68,6 +81,9 @@ public class MyBatisTest {
         List<User> users = mapper.testLike("张");
         users.forEach(item -> System.out.println(item));
         //map.forEach(item -> System.out.println(item));
+
+        int deleteCount = mapper.deleteBatch("4,5,6");
+        System.out.println("DeleteCount:"+deleteCount);
     }
 
 }
