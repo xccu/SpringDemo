@@ -9,7 +9,7 @@
     <insert id="insertUser">insert into t_user values(null,'张三','123',23,'女','123@test.com')</insert>
 
     <!--int insertUser(User user);-->
-    <insert id="insertUser2" useGeneratedKeys="true" keyProperty="id">insert into t_user values(null,#{username},#{password},#{age},#{sex})</insert>
+    <insert id="insertUser2" useGeneratedKeys="true" keyColumn="id" keyProperty="id">insert into t_user(username,password,age,sex,email) values(#{username},#{password},#{age},#{sex},#{email})</insert>
 
     <!--int updateUser();-->
     <update id="updateUser">update t_user set username='ybc',password='123' where id = 5</update>
