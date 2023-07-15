@@ -89,7 +89,7 @@ public class UserController {
 
     /**
      * insert方法
-     * http://localhost:8080/user/update
+     * http://localhost:8080/user/insert
      * @return
      */
     @GetMapping("insert")
@@ -97,6 +97,7 @@ public class UserController {
         log.info("----- Insert test ------");
 
         User user = new User();
+        user.setId(10);
         user.setAge(12);
         user.setSex("male");
         user.setName("test");

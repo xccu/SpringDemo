@@ -82,6 +82,8 @@ public class MyBatisTest {
         users.forEach(item -> System.out.println(item));
         //map.forEach(item -> System.out.println(item));
 
+
+
         int deleteCount = mapper.deleteBatch("4,5,6");
         System.out.println("DeleteCount:"+deleteCount);
     }

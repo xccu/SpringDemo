@@ -1,7 +1,11 @@
-INSERT INTO user (NAME, PASSWORD, Age, Sex) VALUES
-( 'Weslie', '123', 12, 'male'),
-( 'Wolffy', '456', 34, 'male'),
-( 'Paddi', '123', 11, 'male'),
-( 'Sparky', '123', 12, 'male'),
-( 'Tibby', '123', 11, 'female');
+INSERT INTO user (name, password, age, gender,race) VALUES
+( 'Weslie', '123', 12, 'male','Caprinae'),
+( 'Wolffy', '456', 34, 'male','Lupo'),
+( 'Paddi', '123', 11, 'male','Caprinae'),
+( 'Sparky', '123', 12, 'male','Caprinae'),
+( 'Tibby', '123', 11, 'female','Caprinae'),
+( 'Jonie', '123', 13, 'female','Caprinae'),
+( 'Slowy', '123', 80, 'male','Caprinae'),
+( 'Wolnie', '456', 33, 'female','Lupo'),
+( 'Wilie', '456', 5, 'male','Lupo');
 
