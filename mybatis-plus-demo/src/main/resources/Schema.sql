@@ -7,4 +7,12 @@ CREATE TABLE user(
     age INT(6) NOT NULL,
     gender CHAR(50) NULL,
     race CHAR(50) NULL
-)
+);
+
+
+CREATE TABLE t_product(
+    id INT(20) NOT NULL PRIMARY KEY COMMENT '主键ID',
+    NAME VARCHAR(30) NULL DEFAULT NULL COMMENT '商品名称',
+    price INT(11) DEFAULT 0 COMMENT '价格',
+    VERSION INT(11) DEFAULT 0 COMMENT '乐观锁版本号'
+);

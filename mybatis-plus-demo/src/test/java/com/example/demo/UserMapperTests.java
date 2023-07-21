@@ -1,14 +1,20 @@
 package com.example.demo;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.baomidou.mybatisplus.extension.conditions.update.LambdaUpdateChainWrapper;
 import com.baomidou.mybatisplus.extension.conditions.update.UpdateChainWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.mapper.UserMapper;
+import com.example.demo.model.Product;
 import com.example.demo.model.User;
+import com.example.demo.model.enums.GenderEnum;
 import junit.framework.Assert;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -43,10 +49,17 @@ public class UserMapperTests {
         Assert.assertEquals(9, users.size());
         users.forEach(System.out::println);
 
-        QueryWrapper wrapper=new QueryWrapper();
+        System.out.println(("----- QueryWrapper test ------"));
+        QueryWrapper wrapper = new QueryWrapper();
         wrapper.in("id",1,2,3);
         users = userMapper.selectList(wrapper);
         Assert.assertEquals(3, users.size());
+        users.forEach(System.out::println);
+
+        System.out.println(("----- QueryWrapper greater test ------"));
+        wrapper = new QueryWrapper();
+        wrapper.ge("age",30);
+        users = userMapper.selectList(wrapper);
         users.forEach(System.out::println);
     }
 
@@ -54,7 +67,7 @@ public class UserMapperTests {
     void testInsert() {
         User user = new User();
         user.setAge(12);
-        user.setSex("male");
+        user.setSex(GenderEnum.MALE);
         user.setName("test");
 
         userMapper.insert(user);
@@ -65,7 +78,7 @@ public class UserMapperTests {
     void testUpdate(){
         User user = new User();
         user.setAge(12);
-        user.setSex("male");
+        user.setSex(GenderEnum.MALE);
         user.setName("test");
 
         QueryWrapper wrapper=new QueryWrapper();
@@ -108,7 +121,7 @@ public class UserMapperTests {
 
         User userUpdate = new User();
         userUpdate.setAge(12);
-        userUpdate.setSex("male");
+        userUpdate.setSex(GenderEnum.MALE);
         userUpdate.setName("test");
 
         // 链式更改 普通
@@ -118,6 +131,87 @@ public class UserMapperTests {
 
     }
 
+    @Test
+    public void testCondition(){
 
+        System.out.println(("----- Condition test ------"));
+
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        int ageBegin = 30;
+        int ageEnd = 40;
+        String userName = "";
+        wrapper.like(StringUtils.isNotBlank(userName), "username", "a")
+                .ge(ageBegin != 0, "age", ageBegin)
+                .le(ageEnd != 0, "age", ageEnd);
+
+        List<User> users = userMapper.selectList(wrapper);
+        Assert.assertEquals(2, users.size());
+        users.forEach(System.out::println);
+    }
+
+    @Test
+    public void testLambdaQueryWrapper(){
+        System.out.println(("----- Lambda QueryWrapper test ------"));
+
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
+        int ageBegin = 30;
+        int ageEnd = 40;
+        String userName = "";
+        wrapper.like(StringUtils.isNotBlank(userName), User::getName, "a")
+                .ge(ageBegin != 0, User::getAge, ageBegin)
+                .le(ageEnd != 0, User::getAge, ageEnd);
+
+        List<User> users = userMapper.selectList(wrapper);
+        Assert.assertEquals(2, users.size());
+        users.forEach(System.out::println);
+    }
+
+    @Test
+    public void testLambdaUpdateWrapper(){
+        System.out.println(("----- Lambda QueryWrapper test ------"));
+
+        LambdaUpdateWrapper<User> wrapper = new LambdaUpdateWrapper<>();
+        int ageBegin = 30;
+        int ageEnd = 40;
+        String userName = "";
+        wrapper.set(User::getAge, 18)
+                .eq(User::getRace, "Lupo")
+                .and(i -> i.le(User::getAge, 30).or().eq(User::getSex,"male")); //lambda
+        //表达式内的逻辑优先运算
+
+        User user = new User();
+        int result  = userMapper.update(user,wrapper);
+    }
+
+    @Test
+    public void testPage(){
+        //设置分页参数
+        Page<User> page = new Page<>(2, 3);
+        userMapper.selectPage(page, null);
+
+        //获取分页数据
+        List<User> list = page.getRecords();
+        list.forEach(System.out::println);
+        System.out.println("current page："+page.getCurrent());
+        System.out.println("page size："+page.getSize());
+        System.out.println("total count："+page.getTotal());
+        System.out.println("total page："+page.getPages());
+        System.out.println("has previoud："+page.hasPrevious());
+        System.out.println("has next："+page.hasNext());
+    }
+
+    @Test
+    public void testGenderEnum(){
+        User user = new User();
+        user.setName("Enum");
+        user.setAge(20);
+        //设置性别信息为枚举项，会将@EnumValue注解所标识的属性值存储到数据库
+        user.setSex(GenderEnum.MALE);
+        //INSERT INTO t_user ( username, age, sex ) VALUES ( ?, ?, ? )
+        //Parameters: Enum(String), 20(Integer), 1(Integer)
+
+        int result = userMapper.insert(user);
+        Assert.assertEquals(1, result);
+    }
 
 }

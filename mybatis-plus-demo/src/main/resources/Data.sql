@@ -9,3 +9,5 @@ INSERT INTO user (name, password, age, gender,race) VALUES
 ( 'Wolnie', '456', 33, 'female','Lupo'),
 ( 'Wilie', '456', 5, 'male','Lupo');
 
+INSERT INTO t_product (id, NAME, price) VALUES
+(1, '刮痧战狙', 100);

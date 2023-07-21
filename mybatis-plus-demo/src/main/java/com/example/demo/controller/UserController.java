@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.User;
+import com.example.demo.model.enums.GenderEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -99,7 +100,7 @@ public class UserController {
         User user = new User();
         user.setId(10);
         user.setAge(12);
-        user.setSex("male");
+        user.setSex(GenderEnum.MALE);
         user.setName("test");
 
         int result = userMapper.insert(user);

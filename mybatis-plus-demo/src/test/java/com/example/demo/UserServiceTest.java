@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.Services.UserService;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.User;
+import com.example.demo.model.enums.GenderEnum;
 import junit.framework.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class UserServiceTest {
         User user = new User();
         user.setId(10);
         user.setAge(12);
-        user.setSex("male");
+        user.setSex(GenderEnum.MALE);
         user.setName("test");
 
         boolean result = userService.save(user);
@@ -55,14 +56,14 @@ public class UserServiceTest {
         User user1 = new User();
         user1.setId(11);
         user1.setAge(12);
-        user1.setSex("male");
+        user1.setSex(GenderEnum.MALE);
         user1.setName("test");
         users.add(user1);
 
         User user2 = new User();
         user2.setId(12);
         user2.setAge(12);
-        user2.setSex("male");
+        user2.setSex(GenderEnum.MALE);
         user2.setName("test");
         users.add(user2);
 
